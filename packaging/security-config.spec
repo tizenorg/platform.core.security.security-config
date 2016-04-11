@@ -29,6 +29,7 @@ rm -rf %{buildroot}
 
 %files -n security-config
 %manifest %{_datadir}/%{name}.manifest
+#%{_datadir}/license/%{name}
 %defattr(-,root,root,-)
 %attr(755,root,root) /usr/share/security-config/group_id_setting
 
