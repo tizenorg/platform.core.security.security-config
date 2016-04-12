@@ -13,6 +13,7 @@
 /usr/sbin/groupadd -g 652 messaging
 /usr/sbin/groupadd -g 653 social
 /usr/sbin/groupadd -g 654 location
+/usr/sbin/groupadd -g 655 sensor
 /usr/sbin/groupadd -g 901 sdk
 /usr/sbin/groupadd -g 925 scm
 /usr/sbin/groupadd -g 951 application
@@ -33,6 +34,7 @@
 /usr/sbin/useradd messaging -M -u 652 -g 652 -d /var/lib/empty -s /sbin/nologin -c "web framework"
 /usr/sbin/useradd social -M -u 653 -g 653 -d /var/lib/empty -s /sbin/nologin -c "social"
 /usr/sbin/useradd location -M -u 654 -g 654 -d /var/lib/empty -s /sbin/nologin -c "location"
+/usr/sbin/useradd sensor -M -u 655 -g 655 -d /var/lib/empty -s /sbin/nologin -c "sensor"
 /usr/sbin/useradd sdk -M -u 901 -g 901 -d /var/lib/empty -s /sbin/nologin -c "sdk"
 /usr/sbin/useradd scm -M -u 925 -g 925 -d /var/lib/empty -s /sbin/nologin -c "scm"
 /usr/sbin/useradd application -M -u 951 -g 951 -d /var/lib/empty -s /sbin/nologin -c "application"
@@ -53,6 +55,7 @@
 /usr/sbin/groupmod -A messaging system_share
 /usr/sbin/groupmod -A social system_share
 /usr/sbin/groupmod -A location system_share
+/usr/sbin/groupmod -A sensor system_share
 /usr/sbin/groupmod -A sdk system_share
 /usr/sbin/groupmod -A scm system_share
 /usr/sbin/groupmod -A application system_share
