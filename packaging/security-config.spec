@@ -7,7 +7,7 @@ Group:          System/Security
 Source0:        %{name}-%{version}.tar.gz
 Source1:     %{name}.manifest
 BuildRequires:  cmake
-
+Requires:       pwdutils
 
 %description
 set of important system configuration and
