@@ -1,11 +1,11 @@
 Name:           security-config
-Summary:     A set of security configuration files
+Summary:        A set of security configuration files
 Version:        1.0
 Release:        1
 License:        Apache-2.0
 Group:          System/Security
 Source0:        %{name}-%{version}.tar.gz
-Source1:     %{name}.manifest
+Source1:        %{name}.manifest
 BuildRequires:  cmake
 Requires:       pwdutils
 
@@ -35,7 +35,5 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %{_datadir}/license/%{name}
 %defattr(-,root,root,-)
 %attr(755,root,root) /usr/share/security-config/group_id_setting
-
-
-
+%attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/90_user-content-permissions.post
 
