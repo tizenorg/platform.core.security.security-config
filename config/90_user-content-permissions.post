@@ -2,4 +2,13 @@
 
 NEW_USER=$1
 export `tzplatform-get --user $NEW_USER TZ_USER_CONTENT`
+export `tzplatform-get --user $NEW_USER TZ_USER_APPROOT`
+export `tzplatform-get --user $NEW_USER TZ_USER_DB`
+
 find $TZ_USER_CONTENT -type d -exec chown root:priv_mediastorage {} + -exec chmod 2770 {} +
+
+chown $NEW_USER:system_share $TZ_USER_APPROOT
+chmod 750 $TZ_USER_APPROOT
+
+chown $NEW_USER:system_share $TZ_USER_DB
+chmod 770 $TZ_USER_DB
