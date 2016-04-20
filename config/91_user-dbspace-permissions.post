@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+NEW_USER=$1
+export `tzplatform-get --user $NEW_USER TZ_USER_APPROOT`
+export `tzplatform-get --user $NEW_USER TZ_USER_DB`
+
+chown $NEW_USER:system_share $TZ_USER_APPROOT
+chmod 750 $TZ_USER_APPROOT
+
+chown $NEW_USER:system_share $TZ_USER_DB
+chmod 770 $TZ_USER_DB
