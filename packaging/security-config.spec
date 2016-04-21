@@ -36,5 +36,4 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %defattr(-,root,root,-)
 %attr(755,root,root) /usr/share/security-config/group_id_setting
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/90_user-content-permissions.post
-%attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 
