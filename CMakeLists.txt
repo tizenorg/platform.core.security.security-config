@@ -10,8 +10,6 @@ SET(VERSION "${VERSION_MAJOR}.0.2")
 
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/group_id_setting DESTINATION /usr/share/security-config)
 
-INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/90_user-content-permissions.post DESTINATION ${SYSCONF_INSTALL_DIR}/gumd/useradd.d)
-
 INSTALL(FILES
     ${CMAKE_SOURCE_DIR}/packaging/security-config.manifest
     DESTINATION
