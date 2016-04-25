@@ -67,3 +67,4 @@
 /usr/sbin/groupmod -A dbus system_share
 /usr/sbin/groupmod -A pulse system_share
 /usr/sbin/groupmod -A log system_share
+/usr/sbin/groupmod -A sensor input
