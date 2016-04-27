@@ -29,11 +29,13 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 
 %post
 /usr/share/security-config/group_id_setting
+/usr/share/security-config/set_label
 
 %files -n security-config
 %manifest %{_datadir}/%{name}.manifest
 %{_datadir}/license/%{name}
 %defattr(-,root,root,-)
 %attr(755,root,root) /usr/share/security-config/group_id_setting
+%attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 
