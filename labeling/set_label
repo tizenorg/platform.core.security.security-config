@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ ! -d /opt/dbspace ]
+then
+    mkdir -p /opt/dbspace
+fi
+
+chown :system_share /opt/dbspace
+chmod 775 /opt/dbspace
+
+if [ ! -d /opt/etc ]
+then
+    mkdir -p /opt/etc
+fi
+
+chown :system_share /opt/etc
+chmod 775 /opt/etc
