@@ -21,6 +21,12 @@
 /usr/sbin/groupadd -g 1026 testing
 /usr/sbin/groupadd -g 1051 system_share
 
+/usr/sbin/groupadd -g 10012 priv_use_ir
+/usr/sbin/groupadd -g 10713 priv_d2d_datasharing
+/usr/sbin/groupadd -g 10714 priv_vpnservice
+/usr/sbin/groupadd -g 10715 priv_vpnservice_admin
+/usr/sbin/groupadd -g 11104 priv_location_coarse
+
 /usr/sbin/useradd system_fw -u 202 -g 202 -d /var/lib/empty -s /sbin/nologin -c "system framework"
 /usr/sbin/useradd web_fw -M -u 251 -g 251 -d /var/lib/empty -s /sbin/nologin -c "web framework"
 /usr/sbin/useradd app_fw -M -u 301 -g 301 -d /var/lib/empty -s /sbin/nologin -c "app framework"
