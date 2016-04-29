@@ -74,3 +74,4 @@
 /usr/sbin/groupmod -A pulse system_share
 /usr/sbin/groupmod -A log system_share
 /usr/sbin/groupmod -A sensor input
+/usr/sbin/groupmod -A network_fw bt_use
