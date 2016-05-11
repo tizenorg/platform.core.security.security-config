@@ -10,6 +10,7 @@ SET(VERSION "${VERSION_MAJOR}.0.2")
 
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/group_id_setting DESTINATION /usr/share/security-config)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/labeling/set_label DESTINATION /usr/share/security-config)
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/security-config.conf DESTINATION /usr/lib/tmpfiles.d/)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/91_user-dbspace-permissions.post DESTINATION ${SYSCONF_INSTALL_DIR}/gumd/useradd.d)
 
 INSTALL(FILES
