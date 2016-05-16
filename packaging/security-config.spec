@@ -6,8 +6,9 @@ License:        Apache-2.0
 Group:          System/Security
 Source0:        %{name}-%{version}.tar.gz
 Source1:     %{name}.manifest
-BuildRequires:  cmake
+BuildRequires: cmake
 Requires:       pwdutils
+Requires:       libcap-tools
 
 %description
 set of important system configuration and
@@ -37,6 +38,7 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %defattr(-,root,root,-)
 %attr(755,root,root) /usr/share/security-config/group_id_setting
 %attr(755,root,root) /usr/share/security-config/set_label
+%attr(755,root,root) /usr/share/security-config/set_capability
 %attr(644,root,root) /usr/lib/tmpfiles.d/security-config.conf
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 
