@@ -1,12 +1,12 @@
 Name:           security-config
-Summary:     A set of security configuration files
+Summary:        A set of security configuration files
 Version:        1.0
 Release:        1
 License:        Apache-2.0
 Group:          System/Security
 Source0:        %{name}-%{version}.tar.gz
-Source1:     %{name}.manifest
-BuildRequires: cmake
+Source1:        %{name}.manifest
+BuildRequires:  cmake
 Requires:       pwdutils
 Requires:       libcap-tools
 
@@ -40,5 +40,6 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) /usr/share/security-config/set_capability
 %attr(644,root,root) /usr/lib/tmpfiles.d/security-config.conf
+%attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/90_user-content-permissions.post
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 

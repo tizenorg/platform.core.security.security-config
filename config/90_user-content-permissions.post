@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+NEW_USER=$1
+export `tzplatform-get --user $NEW_USER TZ_USER_CONTENT`
+find $TZ_USER_CONTENT -type d -exec chown root:priv_mediastorage {} + -exec chmod 2770 {} +
