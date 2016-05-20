@@ -7,7 +7,7 @@ Group:          System/Security
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.manifest
 BuildRequires:  cmake
-Requires:       pwdutils
+Requires:       shadow-utils
 Requires:       libcap-tools
 
 %description
