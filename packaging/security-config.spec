@@ -40,6 +40,5 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) /usr/share/security-config/set_capability
 %attr(644,root,root) /usr/lib/tmpfiles.d/security-config.conf
-%attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/90_user-content-permissions.post
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 
