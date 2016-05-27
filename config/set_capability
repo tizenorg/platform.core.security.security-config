@@ -3,6 +3,8 @@
 ## Setting capability in binary image creation stage(via mic)
 
 # Package		sdbd
+# Owner 		Jeeho Yoo(jeeho.yoo@samsung.com)
+# Date			May 24, 2016
 # Required		cap_setuid, cap_setgid
 # cap_setuid		set user id per each user logged in
 # cap_setgid		set group id following user id
@@ -10,14 +12,28 @@
 /usr/sbin/setcap cap_setuid,cap_setgid=eip /usr/sbin/sdbd
 
 # Package		alarm-server
+# Owner 		Jiwoong Im(jiwoong.im@samsung.com)
+# Date			May 24, 2016
 # Required		cap_sys_time
 # cap_sys_time		settimeofday() system call and rtc setting time need privilege; CAP_SYS_TIME
 
 /usr/sbin/setcap cap_sys_time=eip /usr/bin/alarm-server
 
 # Package		download-provider
+# Owner 		Jaekuk Lee(juku1999@samsung.com)
+# Date			May 24, 2016
 # Required		cap_chown, cap_dac_override
 # cap_chown		needs to change owner of downloaded file from download-provider to application
 # cap_dac_override	needs to access directory which user id is different (override DAC permission)
 
 /usr/sbin/setcap cap_chown,cap_dac_override=eip /usr/bin/download-provider
+
+# Package		media-server
+# Owner 		Minje Ahn(minje.ahn@samsung.com)
+# Date			May 27, 2016
+# Required		cap_dac_override
+# cap_dac_override	media-server needs to access client's directory	defined as each client's uid and gid
+#			in case of providing its capi; thumbnail_util_extract() (providing thumbnail requested by client)
+#			client would be another service daemon and application
+
+/usr/sbin/setcap cap_dac_override=eip /usr/bin/media-server
