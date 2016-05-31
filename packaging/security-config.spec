@@ -3,7 +3,7 @@ Summary:        A set of security configuration files
 Version:        1.0
 Release:        1
 License:        Apache-2.0
-Group:          System/Security
+Group:          Security/Configuration
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.manifest
 BuildRequires:  cmake
@@ -40,5 +40,11 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) /usr/share/security-config/set_capability
 %attr(644,root,root) /usr/lib/tmpfiles.d/security-config.conf
+#%attr(755,root,root) /usr/share/security-config/test/aslr_test/*
+#%attr(755,root,root) /usr/share/security-config/test/dep_test/*
+#%attr(755,root,root) /usr/share/security-config/test/setuid_test/*
+%attr(755,root,root) /usr/share/security-config/test/smack_rule_test/*
+%attr(755,root,root) /usr/share/security-config/test/root_test/*
+%attr(755,root,root) /usr/share/security-config/test/capability_test/*
+%attr(755,root,root) /usr/share/security-config/test/path_check_test/*
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
-
