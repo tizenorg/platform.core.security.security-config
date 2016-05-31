@@ -19,3 +19,5 @@ INSTALL(FILES
     DESTINATION
     /usr/share
 )
+
+ADD_SUBDIRECTORY(test)
