@@ -1,0 +1,5 @@
+1. Attach target
+2. Run test-aslr.sh on terminal
+	2-1. It parses .service file under systemd and find target executables and
+	2-2. Check whether ASLR is applied on those executables.
+3. After test, it pulls test_result.csv from target. Check test_result.csv.

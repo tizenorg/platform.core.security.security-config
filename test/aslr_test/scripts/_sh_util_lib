@@ -1,0 +1,213 @@
+#!/bin/bash
+
+#=========================================================
+# [Functions]
+#=========================================================
+#=========================================================
+# [fn] Change console color
+#=========================================================
+RESET=0;BRIGHT=1;DIM=2;ITALIC=3;UNDERLINE=4
+BLINK_SLOW=5;BLINK_RAPID=6;REVERSE=7;HIDDEN=8
+
+BLACK=0;RED=1;GREEN=2;YELLOW=3
+BLUE=4;MAGENTA=5;CYAN=6;WHITE=7
+
+FONT_OFFSET=30
+BACK_OFFSET=40
+
+# Ignore Background now
+function fnChangeConsoleColor {
+	
+	argc=$#
+	if [ $argc -eq 3 ]; then
+		FontColor=`expr $2 + $FONT_OFFSET`
+		cmd="\e[$1;$FontColor""m"
+		echo -e $cmd
+	else
+		echo "[Usage] ChangeConsoleColor Brightness FontColor BackColor"
+	fi
+	
+}
+
+function fnRestoreOriginalColor {
+
+	echo -e "\e[m";
+	
+}
+
+#=========================================================
+# [fn] Modified echo
+#=========================================================
+#echo Info
+function echoI {
+
+	fnChangeConsoleColor $BRIGHT $BLUE $BLACK
+	echo "========================================================="
+	echo $@
+	echo "========================================================="
+	fnRestoreOriginalColor
+	
+}
+
+# echo Success
+function echoS {
+
+	fnChangeConsoleColor $BRIGHT $GREEN $BLACK
+	echo $@
+	fnRestoreOriginalColor
+	
+}
+
+# echo Error
+function echoE {
+
+	fnChangeConsoleColor $BRIGHT $RED $BLACK
+	echo $@
+	fnRestoreOriginalColor
+	
+}
+
+#=========================================================
+# [fn] Print done
+#=========================================================
+function fnPrintSDone {
+
+	echoS "Successfully Done!"
+	
+}
+
+#=========================================================
+# [fn] Finish the script
+#=========================================================
+function fnFinishThisScript {
+
+	ret_val=$1
+	
+	if [ $ret_val -eq 0 ]
+	then
+		echoS "This script has completed successfully."
+	else
+		echoE "An error has occurred in this script."
+	fi
+
+	exit $ret_val
+	
+}
+
+#=========================================================
+# [fn] Check if the File or Directory exists
+#=========================================================
+function fnCheckFileExist {
+
+	file_path=$1
+	
+	if [ -e $file_path ]
+	then
+		echo 1
+	else
+		echo 0
+	fi
+
+}
+
+#=========================================================
+# [fn] Get a process id
+#=========================================================
+function fnGetPid {
+
+	process_name=$1
+	invert=$2
+	
+	pid=`ps -ef | grep "$process_name" | grep -v "grep" | grep -v "$invert" | awk '{print $2}'`
+	
+	echo $pid
+	
+}
+
+#=========================================================
+# [fn] Get a process id
+#=========================================================
+function fnGetPid2 {
+
+	process_name=$1
+	
+	PID=`pidof "$process_name"`
+	
+	echo $PID
+	
+}
+
+#=========================================================
+# [fn] Kill a process
+#=========================================================
+function fnKillProcByName {
+
+	process_name=$1
+	pid=$(fnGetPid "$process_name" "NULL")
+
+	if [ "$pid" != "" ]
+	then
+		disown $pid		# for silent killing
+		kill -9 $pid
+	fi
+	
+}
+
+function fnKillProcByPid {
+
+	pid=$1
+
+	if ps -p $pid > /dev/null
+	then
+		disown $pid		# for silent killing
+		kill -9 $pid
+	fi
+	
+}
+
+#=========================================================
+# [fn] Calculate the time
+#=========================================================
+t_diff=
+h_time=
+m_time=
+s_time=
+
+function fnCalcTime {
+	
+	_end_nano_sec=$1
+	_begin_nano_sec=$2
+	
+	# There'n no "bc" command in the target
+	#t_diff=`echo "$_end_nano_sec-$_begin_nano_sec" | bc`;
+	#h_time=`echo "$t_diff/3600" | bc`
+	#m_time=`echo "($t_diff/60)-($h_time*60)" | bc`
+	#s_time=`echo "$t_diff-(($t_diff/60)*60)" | bc`
+	
+	t_diff=`echo "$_end_nano_sec $_begin_nano_sec" | awk '{printf "%.4f", $1 - $2 }'`
+	h_time=`echo "$t_diff" | awk '{printf "%d", $1 / 3600 }'`
+	m_time=`echo "$t_diff $h_time" | awk '{printf "%d", ($1 / 60) - ($2 * 60) }'`
+	s_time=`echo "$t_diff $h_time $m_time" | awk '{printf "%.4f", $1 - ($2 * 3600) - ($3 * 60) }'`
+	
+}
+
+#=========================================================
+# [fn] Print execuion time
+#=========================================================
+function fnPrintExecTime {
+	
+	_begin_time=$1
+	_end_time=$2
+	hTime=$3
+	mTime=$4
+	sTime=$5
+	
+	fnChangeConsoleColor $BRIGHT $BLUE $BLACK
+	echo "========================================================="
+	echo "|  Begin  Time | " "$_begin_time"
+	echo "|   End   Time | " "$_end_time"
+	echo "| Running Time | " "$hTime hour $mTime min $sTime sec"
+	echo "========================================================="
+	fnRestoreOriginalColor
+	
+}
