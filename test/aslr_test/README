@@ -1,0 +1,5 @@
+1. Attach target
+2. Run test-aslr.sh at target /usr/share/security-config/test/aslr_test/.
+	2-1. It parses .service file under systemd and find target executables and
+	2-2. Check whether ASLR is applied on those executables.
+3. Check test result saved at /usr/share/security-config/test/aslr_test/output/test_result.csv file.

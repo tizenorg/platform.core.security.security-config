@@ -3,7 +3,7 @@ Summary:        A set of security configuration files
 Version:        1.0
 Release:        1
 License:        Apache-2.0
-Group:          System/Security
+Group:          Security/Configuration
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.manifest
 BuildRequires:  cmake
@@ -19,7 +19,7 @@ setup files, such as passwd, group, and profile.
 
 %build
 
-%cmake .
+%cmake . -DARCH=%{_arch}
 
 %install
 rm -rf %{buildroot}
@@ -31,6 +31,8 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %post
 /usr/share/security-config/group_id_setting
 /usr/share/security-config/set_label
+mkdir -p /usr/share/security-config/result
+mkdir -p /usr/share/security-config/log
 
 %files -n security-config
 %manifest %{_datadir}/%{name}.manifest
@@ -40,5 +42,12 @@ cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) /usr/share/security-config/set_capability
 %attr(644,root,root) /usr/lib/tmpfiles.d/security-config.conf
+%attr(755,root,root) /usr/share/security-config/test/aslr_test/*
+%attr(755,root,root) /usr/share/security-config/test/utils/*
+%attr(755,root,root) /usr/share/security-config/test/dep_test/*
+%attr(755,root,root) /usr/share/security-config/test/setuid_test/*
+%attr(755,root,root) /usr/share/security-config/test/smack_rule_test/*
+%attr(755,root,root) /usr/share/security-config/test/root_test/*
+%attr(755,root,root) /usr/share/security-config/test/capability_test/*
+%attr(755,root,root) /usr/share/security-config/test/path_check_test/*
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
-
