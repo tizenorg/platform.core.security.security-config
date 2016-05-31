@@ -1,0 +1,3 @@
+1. Attach target
+2. Run test-setuid.sh at target /usr/share/security-config/test/setuid_test/.
+3. Check test result saved at /usr/share/security-config/test/setuid_test/output/test_result.csv file.
