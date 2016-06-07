@@ -2,8 +2,8 @@
 
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
-result_file=$result_dir"/smack_basic_result.csv"
-log_file=$log_dir"/smack_basic_log.csv"
+result_file=$result_dir"/smack_basic_test.result"
+log_file=$log_dir"/smack_basic_test.log"
 smackfs_path="/sys/fs/smackfs"
 smack_rule_path="$smackfs_path/load2"
 

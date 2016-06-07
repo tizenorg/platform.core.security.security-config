@@ -2,8 +2,8 @@
 
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
-result_file=$result_dir"/security_mount_option_result.csv"
-log_file=$log_dir"/security_mount_option_log.csv"
+result_file=$result_dir"/security_mount_option_test.result"
+log_file=$log_dir"/security_mount_option_test.log"
 chk_result=$(/bin/cat /proc/mounts | grep "/tmp" | grep "nosuid" | grep "noexec")
 
 if [ ! -d $result_dir ]; then

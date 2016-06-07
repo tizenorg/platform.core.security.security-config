@@ -4,8 +4,8 @@ result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 SMACK_RULE_APPLY_PATH="/sys/fs/smackfs/load2"
 dbpath="/opt/dbspace/.security-manager.db"
-result_file=$result_dir"/checksmackrule_loaded_result.csv"
-log_file=$log_dir"/checksmackrule_loaded_log.csv"
+result_file=$result_dir"/checksmackrule_loaded.result"
+log_file=$log_dir"/checksmackrule_loaded.log"
 exception_file="/usr/share/security-config/test/smack_rule_test/smackrule_exception.list"
 
 function EXCEPTION_CHECK

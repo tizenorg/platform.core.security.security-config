@@ -2,8 +2,8 @@
 
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
-result_file=$result_dir"/checksmacklabel_result.csv"
-log_file=$log_dir"/checksmacklabel_log.csv"
+result_file=$result_dir"/checksmacklabel.result"
+log_file=$log_dir"/checksmacklabel.log"
 exception_file="/usr/share/security-config/test/smack_rule_test/smacklabel_exception.list"
 
 function CHECK_EXCEPTION
