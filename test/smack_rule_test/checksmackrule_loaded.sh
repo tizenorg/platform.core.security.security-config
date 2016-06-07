@@ -6,6 +6,19 @@ SMACK_RULE_APPLY_PATH="/sys/fs/smackfs/load2"
 dbpath="/opt/dbspace/.security-manager.db"
 result_file=$result_dir"/checksmackrule_loaded_result.csv"
 log_file=$log_dir"/checksmackrule_loaded_log.csv"
+exception_file="/usr/share/security-config/test/smack_rule_test/smackrule_exception.list"
+
+function EXCEPTION_CHECK
+{
+	while read exception_line
+	do
+		if [ "$1,$2,$3" == "$exception_line" ]
+		then
+			return 1
+		fi
+	done < <(/bin/cat $exception_file ) 
+	return 0
+}
 
 function RULE_CHECK
 {
@@ -345,7 +358,12 @@ function RULE_CHECK
         fi 
     fi
 
-    echo "$1,$2,$3" >> $log_file
+    EXCEPTION_CHECK $1 $2 $3
+
+    if [ "$?" == 0 ]
+    then
+        /bin/echo "$1,$2,$3" >> $log_file
+    fi
 }
 
 function RULE_CHECK_APPLY_PATH

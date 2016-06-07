@@ -99,7 +99,8 @@ function chk_ptrace
 	if [ $ptrace_read -eq 0 ]
 	then
 		/bin/echo "Read sys/fs/smackfs/ptrace , 0 - default" >> $log_file
-		/bin/echo "0" > $result_file
+		# TODO : Below should be enabled later.
+		#/bin/echo "0" > $result_file
 	elif [ $ptrace_read -eq 1 ]
 	then
 		/bin/echo "Read sys/fs/smackfs/ptrace , 1 - exact" >> $log_file

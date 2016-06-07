@@ -1,0 +1,15 @@
+net-config::logging
+swap
+emuld
+org.tizen.music-chooser
+org.tizen.voice-setting
+ttrace
+org.tizen.bluetooth-share-ui
+device::camera
+bluez
+csc-manager
+factory-15
+dfms-kernel
+deviced
+spreadtrum-utils
+system::sys_logging

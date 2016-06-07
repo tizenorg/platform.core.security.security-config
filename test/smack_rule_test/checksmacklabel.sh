@@ -4,16 +4,35 @@ result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 result_file=$result_dir"/checksmacklabel_result.csv"
 log_file=$log_dir"/checksmacklabel_log.csv"
+exception_file="/usr/share/security-config/test/smack_rule_test/smacklabel_exception.list"
+
+function CHECK_EXCEPTION
+{
+	while read exception_line
+	do
+		filtered_label=$(/bin/echo $label | /bin/grep $exception_line)
+		if [ -n "$filtered_label" ]
+		then
+			return 1
+		fi
+	done < <(/bin/cat $exception_file ) 
+	return 0
+}
+
 
 function CHECK_RULE_ACCESS
 {
 	if [ "${label:8:1}"  != '_' ] && [ "${label:8:1}"  != '*' ] && [ "${label:8:1}"  != '^' ] &&
 		 [ "${label:8:6}"  != 'System' ] && [ "${label:8:11}"  != 'System::Run' ] && [ "${label:8:11}"  != 'System::Log' ] &&
-	   [ "${label:8:13}"  != 'System::Shared' ] && [ "${label:8:4}"  != 'User' ] && [ "${label:8:10}"  != 'User::Home' ] &&
+	   [ "${label:8:14}"  != 'System::Shared' ] && [ "${label:8:4}"  != 'User' ] && [ "${label:8:10}"  != 'User::Home' ] &&
 	   [ "${label:8:17}"  != 'User::App::Shared' ] && [ "${label:8:9}"  != 'User::Pkg' ]
 	then
-		/bin/echo "ACCESS label,$line2" >> $log_file
-  fi
+		CHECK_EXCEPTION
+		if [ "$?" == 0 ]
+		then
+			/bin/echo "ACCESS label,$line2" >> $log_file
+		fi
+	fi
 }
 
 function CHECK_RULE_EXECUTE
@@ -21,7 +40,11 @@ function CHECK_RULE_EXECUTE
 	if [ "${label:9:1}"  != '_' ] && [ "${label:9:1}"  != '^' ] &&
 	   [ "${label:9:6}"  != 'System' ] && [ "${label:9:4}"  != 'User' ] && [ "${label:9:9}"  != 'User::App' ]
 	then
-		/bin/echo "EXECUTE label,$line2" >> $log_file
+		CHECK_EXCEPTION
+		if [ "$?" == 0 ]
+		then
+			/bin/echo "EXECUTE label,$line2" >> $log_file
+		fi
 	fi
 }
 
