@@ -22,6 +22,6 @@ if [ ! -d $result_dir ]; then
 else
 	echo "result dir exist"
 fi
-$MV $aslr_script_dir/log.csv $log_dir/aslr_log.csv
-$MV $aslr_script_dir/result $result_dir/aslr_result
+$MV $aslr_script_dir/log.csv $log_dir/aslr_test.log
+$MV $aslr_script_dir/result $result_dir/aslr_test.result
 

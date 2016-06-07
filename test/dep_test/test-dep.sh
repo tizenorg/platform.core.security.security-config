@@ -8,10 +8,22 @@
 #=========================================================
 echoI "Script Begin"
 LIBDW="libdw-0.153.so"
+lib_dir=
+# Set lib_dir
+if [ -d "/usr/lib64" ]; then
+	lib_dir="/usr/lib64"
+elif [ -d "/usr/lib" ]; then
+	lib_dir="/usr/lib"
+else
+	echo "No proper lib dir"
+	exit 1
+fi
+echo "lib_dir = $lib_dir"
+
 # Set required utils
 if [ -a "$utils_dir/$LIBDW" ]; then
-    $CP $utils_dir/libdw* /usr/lib/
-    $LN /usr/lib/libdw-0.153.so /usr/lib/libdw.so.1
+    $CP $utils_dir/libdw* $lib_dir
+    $LN $lib_dir/libdw-0.153.so $lib_dir/libdw.so.1
 fi
 
 # Run test
@@ -32,10 +44,10 @@ else
     echo "result dir exist"
 fi
 
-$MV $dep_script_dir/result $result_dir/dep_result
-$MV $dep_script_dir/log.csv $log_dir/dep_log.csv
+$MV $dep_script_dir/result $result_dir/dep_test.result
+$MV $dep_script_dir/log.csv $log_dir/dep_test.log
 
 # Remove utils
-if [ -a "/usr/lib/$LIBDW" ]; then
-	$RM /usr/lib/libdw*
+if [ -a "$lib_dir/$LIBDW" ]; then
+	$RM $lib_dir/libdw*
 fi

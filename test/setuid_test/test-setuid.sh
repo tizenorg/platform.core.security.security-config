@@ -23,5 +23,5 @@ if [ ! -d $result_dir ]; then
 else
     echo "result dir exist"
 fi
-$MV $suid_script_dir/log.csv $log_dir/setuid_log.csv
-$MV $suid_script_dir/result $result_dir/setuid_result
+$MV $suid_script_dir/log.csv $log_dir/setuid_test.log
+$MV $suid_script_dir/result $result_dir/setuid_test.result

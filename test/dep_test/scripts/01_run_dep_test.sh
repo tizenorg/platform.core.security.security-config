@@ -17,6 +17,7 @@ file_ret=
 grep_ret=
 fail_cnt=
 tmp_file="$dep_script_dir/tmp.list"
+exception_list="$dep_script_dir/scripts/exception.list"
 function makeInput {
 	$RM $tmp_file
 	$TOUCH $tmp_file
@@ -64,9 +65,20 @@ function testDEP {
 			echoS "$line, OK"
         	echo "$line"",OK" >> $log_file
 		else
-			echoE "$line, NOK"
-			echo "$line"",NOK" >> $log_file
-			fail_cnt=$((fail_cnt+1))
+			is_exception="false"
+			while read line2; do
+				if [ "$line" = "$line2" ]; then
+					is_exception="true"
+				fi
+			done < $exception_list
+			if [ "$is_exception" = "true" ]; then
+				echoS "$line"", OK - Not a target of DEP test"
+				echo "$line"",OK - Not a target of DEP test" >> $log_file
+			else
+				echoE "$line, NOK"
+				echo "$line"",NOK" >> $log_file
+				fail_cnt=$((fail_cnt+1))
+			fi
     	fi
 	done < $input_file
 	$RM $input_file
@@ -94,11 +106,11 @@ echoI "Test DEP"
 
 testDEP
 echo "================================================================"
-if [ "$fail_cnt" == "" ]; then
+if [ $((fail_cnt)) -lt 0 ]; then
 	echo "NO STACK RWE"
 	echo "YES" > $result_file
 else
-	echo "STACK RWE: $fail_cnt"
+	echo "STACK RWE: $((fail_cnt))"
 	echo "NO" > $result_file
 fi
 echo "================================================================"

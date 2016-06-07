@@ -105,13 +105,13 @@ sortInput
 echoI "Test Systemd ASLR"
 testSystemDASLR
 
-if [ $fail_cnt -lt 1 ]; then
+if [ $((fail_cnt)) -lt 1 ]; then
     echo "YES" > $result_file
 else
     echo "NO" > $result_file
 fi
 echo "================================================================"
-echo "TOTAL: $total_cnt, NOT APPLIED: $fail_cnt"
+echo "TOTAL: $((total_cnt)), NOT APPLIED: $((fail_cnt))"
 echo "================================================================"
 echo ""
 

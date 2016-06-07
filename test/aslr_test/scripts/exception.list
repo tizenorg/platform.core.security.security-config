@@ -17,3 +17,8 @@
 /usr/bin/sleep
 /usr/bin/touch
 /usr/sbin/sulogin
+
+/usr/bin/efl_config
+/usr/bin/nether
+/usr/bin/vpnsvc-daemon
+/usr/bin/vmodem_x86
