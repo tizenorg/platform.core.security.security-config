@@ -4,8 +4,8 @@ result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 SMACK_RULE_APPLY_PATH='/opt/var/security-manager/rules/*'
 dbpath='/opt/dbspace/.security-manager.db'
-result_file=$result_dir"/checksmackrule_saved_result.csv"
-log_file=$log_dir"/checksmackrule_saved_log.csv"
+result_file=$result_dir"/checksmackrule_saved.result"
+log_file=$log_dir"/checksmackrule_saved.log"
 
 function RULE_CHECK
 {

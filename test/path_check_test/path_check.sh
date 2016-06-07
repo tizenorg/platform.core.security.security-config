@@ -3,8 +3,8 @@
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 cmd_list_path=$log_dir"/cmd_list"
-result_file=$result_dir"/path_check_result.csv"
-log_file=$log_dir"/path_check_log.csv"
+result_file=$result_dir"/path_check.result"
+log_file=$log_dir"/path_check.log"
 script_file_list=$log_dir"/script_file_list"
 utl_path="/usr/share/security-config/test/utils"
 
