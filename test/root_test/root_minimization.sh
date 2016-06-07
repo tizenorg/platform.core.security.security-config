@@ -11,10 +11,10 @@ ROOT_LIST="/usr/share/security-config/test/root_test/root_daemon_list"
 NON_DAEMON_LIST="/usr/share/security-config/test/root_test/non_daemon_list"
 NON_ROOT_LIST="/usr/share/security-config/test/root_test/non_root_list"
 EXCEPTION_LIST="/usr/share/security-config/test/root_test/exception_list"
-LOG_FAILED_SERVICES="/usr/share/security-config/log/log_failed_list"
-LOG_NEW_ROOT_SERVICES="/usr/share/security-config/log/log_new_root_list"
-RESULT_FAILED_SERVICES="/usr/share/security-config/result/result_failed_list"
-RESULT_NEW_ROOT_SERVICES="/usr/share/security-config/result/result_new_root_list"
+LOG_FAILED_SERVICES="/usr/share/security-config/log/root_test_failed_list.log"
+LOG_NEW_ROOT_SERVICES="/usr/share/security-config/log/root_test_new_root.log"
+RESULT_FAILED_SERVICES="/usr/share/security-config/result/root_test_failed_list.result"
+RESULT_NEW_ROOT_SERVICES="/usr/share/security-config/result/root_test_new_root.result"
 
 checkNonRootList(){
 
