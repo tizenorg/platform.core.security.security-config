@@ -1,11 +1,9 @@
-ac-init.service,systemd
 accounts-service.service,systemd
 browser-provider.service,systemd
 connman.service,systemd
 cp2-downloader.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
-dloginit.service,systemd
 download-provider.service,systemd
 lbs-server.service,systemd
 modemd.service,systemd
@@ -21,12 +19,11 @@ sprd-wcnd.service,systemd
 systemd-journald.service,systemd
 systemd-logind.service,systemd
 systemd-udevd.service,systemd
-tbm-drm-auth.service,systemd
-tdm-socket.service,systemd
 tlm.service,systemd
 umount-opt.service,systemd
 user@.service,systemd
 vpnsvc-daemon.service,systemd
+wifi-mac-check.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.login1.service,dbus
