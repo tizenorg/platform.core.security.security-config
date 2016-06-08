@@ -1,7 +1,8 @@
 accounts-service.service,systemd
 connman.service,systemd
+dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
-dloginit.service,systemd
+device-policy-manager.service,systemd
 lbs-server.service,systemd
 net-config.service,systemd
 nether.service,systemd

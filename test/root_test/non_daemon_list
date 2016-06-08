@@ -1,3 +1,4 @@
+ac-init.service,systemd
 alsa-restore.service,systemd
 alsa-state.service,systemd
 alsa-store.service,systemd
@@ -11,7 +12,6 @@ console-shell.service,systemd
 container-getty@.service,systemd
 dbus-org.freedesktop.hostname1.service,systemd
 dbus-org.freedesktop.locale1.service,systemd
-dbus-org.freedesktop.login1.service,systemd
 dbus-org.freedesktop.machine1.service,systemd
 dbus-org.freedesktop.timedate1.service,systemd
 debug-shell.service,systemd
@@ -77,6 +77,8 @@ systemd-update-utmp-runlevel.service,systemd
 systemd-update-utmp.service,systemd
 systemd-user-sessions.service,systemd
 systemd-vconsole-setup.service,systemd
+tbm-drm-auth.service,systemd
+tdm-socket.service,systemd
 tizen-system-env.service,systemd
 tizenid.service,systemd
 ttrace-marker.service,systemd
