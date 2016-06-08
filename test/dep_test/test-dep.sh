@@ -9,6 +9,16 @@
 echoI "Script Begin"
 LIBDW="libdw-0.153.so"
 lib_dir=
+# Rename utils
+file_cmd=`$FIND $utils_dir -name file.*`
+readelf_cmd=`$FIND $utils_dir -name readelf.*`
+if [ "$file_cmd" != "" ]; then
+    $MV $file_cmd $utils_dir/file
+fi
+if [ "$readelf_cmd" != "" ]; then
+    $MV $readelf_cmd $utils_dir/readelf
+fi
+
 # Set lib_dir
 if [ -d "/usr/lib64" ]; then
 	lib_dir="/usr/lib64"
@@ -21,9 +31,11 @@ fi
 echo "lib_dir = $lib_dir"
 
 # Set required utils
-if [ -a "$utils_dir/$LIBDW" ]; then
-    $CP $utils_dir/libdw* $lib_dir
-    $LN $lib_dir/libdw-0.153.so $lib_dir/libdw.so.1
+libdw_lib=`$FIND $utils_dir -name libdw*`
+if [ "$libdw_lib" != "" ]; then
+	$MV $libdw_lib $utils_dir/"$LIBDW"
+    $CP $utils_dir/$LIBDW $lib_dir
+    $LN $lib_dir/$LIBDW $lib_dir/libdw.so.1
 fi
 
 # Run test

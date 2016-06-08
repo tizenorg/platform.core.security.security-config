@@ -8,6 +8,16 @@
 #=========================================================
 echoI "Script Begin"
 
+# Rename utils
+file_cmd=`$FIND $utils_dir -name file.*`
+readelf_cmd=`$FIND $utils_dir -name readelf.*`
+if [ "$file_cmd" != "" ]; then
+	$MV $file_cmd $utils_dir/file
+fi
+if [ "$readelf_cmd" != "" ]; then
+	$MV $readelf_cmd $utils_dir/readelf
+fi
+
 source $aslr_script_dir/scripts/run_aslr_test.sh
 
 if [ ! -d $log_dir ]; then
