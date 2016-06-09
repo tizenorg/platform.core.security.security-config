@@ -83,7 +83,6 @@ tizen-system-env.service,systemd
 tizenid.service,systemd
 ttrace-marker.service,systemd
 webappenc-initializer.service,systemd
-wifi-mac-check.service,systemd
 zbooting-done.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
