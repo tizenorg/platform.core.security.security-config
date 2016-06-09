@@ -31,7 +31,7 @@ fi
 echo "lib_dir = $lib_dir"
 
 # Set required utils
-libdw_lib=`$FIND $utils_dir -name libdw*`
+libdw_lib=`$FIND $utils_dir -name utillib.*`
 if [ "$libdw_lib" != "" ]; then
 	$MV $libdw_lib $utils_dir/"$LIBDW"
     $CP $utils_dir/$LIBDW $lib_dir
