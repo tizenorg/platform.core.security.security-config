@@ -2,10 +2,24 @@
 
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
-SMACK_RULE_APPLY_PATH='/opt/var/security-manager/rules/*'
+SMACK_RULE_APPLY_PATH1='/opt/var/security-manager/rules/*'
+SMACK_RULE_APPLY_PATH2='/etc/smack/accesses.d/*'
 dbpath='/opt/dbspace/.security-manager.db'
 result_file=$result_dir"/checksmackrule_saved.result"
 log_file=$log_dir"/checksmackrule_saved.log"
+exception_file="/usr/share/security-config/test/smack_rule_test/smackrule_exception_saved.list"
+
+function EXCEPTION_CHECK
+{
+	while read exception_line
+	do
+		if [ "$1,$2,$3" == "$exception_line" ]
+		then
+			return 1
+		fi
+	done < <(/bin/cat $exception_file ) 
+	return 0
+}
 
 function RULE_CHECK
 {
@@ -344,12 +358,18 @@ function RULE_CHECK
             return 0
         fi 
     fi
-    /bin/echo "$1,$2,$3" >> $log_file
+
+    EXCEPTION_CHECK $1 $2 $3
+
+    if [ "$?" == 0 ]
+    then
+        /bin/echo "$1,$2,$3" >> $log_file
+    fi
 }
 
 function RULE_CHECK_APPLY_PATH
 {
-    cat $SMACK_RULE_APPLY_PATH | while read line    
+    cat $SMACK_RULE_APPLY_PATH1 $SMACK_RULE_APPLY_PATH2 | while read line    
     do
         subject=$(/bin/echo $line | /usr/bin/cut -f 1 -d " ")
         object=$(/bin/echo $line | /usr/bin/cut -f 2 -d " ")

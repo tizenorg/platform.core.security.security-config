@@ -5,6 +5,7 @@ INSTALL(FILES
           ${SHELL_SCRIPT}
 		smacklabel_exception.list
 		smackrule_exception.list
+		smackrule_exception_saved.list
           DESTINATION
           /usr/share/security-config/test/smack_rule_test
 )
