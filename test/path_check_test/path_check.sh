@@ -3,6 +3,7 @@
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 cmd_list_path=$log_dir"/cmd_list"
+script_list_path=$log_dir"/script_file_list"
 result_file=$result_dir"/path_check.result"
 log_file=$log_dir"/path_check.log"
 script_file_list=$log_dir"/script_file_list"
@@ -97,11 +98,19 @@ function PATH_CHECK
 
 function CHECK
 {
-	/bin/find / -type f -exec $utl_path/file {} \; 2>/dev/null | /bin/grep "shell script" | /bin/cut -d ":" -f1 | while read script_file_line
+	/bin/find /usr /opt /etc -type f -exec $utl_path/file {} \; 2>/dev/null | /bin/grep "shell script" | /bin/cut -d ":" -f1 >> $script_list_path
+	
+	while read script_file_line
 	do
-		PATH_CHECK $script_file_line
-	done
+		PATH_CHECK $script_file_line		
+	done < <(/bin/cat $script_list_path)
 }
+
+# Rename file util
+file_cmd=`/bin/find $utl_path -name file.*`
+if [ "$file_cmd" != "" ]; then
+	/bin/mv $file_cmd $utl_path/file
+fi
 
 if [ ! -d $log_dir ]; then
     /bin/mkdir $log_dir
@@ -122,6 +131,10 @@ if [ -e "$cmd_list_path" ]
 then
 	/bin/rm $cmd_list_path
 fi
+if [ -e "$script_list_path" ]
+then
+	/bin/rm $script_list_path
+fi
 
 /bin/echo "PATH CHECK TEST STARTED!"
 generate_cmd_list 
@@ -134,7 +147,15 @@ else
 	/bin/echo "0" > $result_file
 fi
 
+if [ -e "$cmd_list_path" ]
+then
+	/bin/rm $cmd_list_path
+fi
+if [ -e "$script_list_path" ]
+then
+	/bin/rm $script_list_path
+fi
+
 /bin/echo "PATH CHECK FINISHED!"
-/bin/echo "Results can be found in path_check_result.csv"
 
 
