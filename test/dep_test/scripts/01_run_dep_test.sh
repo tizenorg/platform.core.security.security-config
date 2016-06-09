@@ -49,7 +49,7 @@ function makeInput {
 	$SED -i '/\.service$/d' $tmp_file
 
 	while read line; do
-		$utils_dir/file $line | $GREP "ELF" | $CUT -d ":" -f 1 >> $input_file
+		$FILE $line | $GREP "ELF" | $CUT -d ":" -f 1 >> $input_file
 	done < $tmp_file
 	$RM $tmp_file
 }
@@ -59,7 +59,7 @@ function testDEP {
 	while read line; do
 		grep_ret=""
 		echoI "Check $line"
-		grep_ret=`$utils_dir/readelf -l $line | $GREP "STACK" | $GREP "RWE"`
+		grep_ret=`$READELF -l $line | $GREP "STACK" | $GREP "RWE"`
 
     	if [ ! "$grep_ret" ]; then
 			echoS "$line, OK"

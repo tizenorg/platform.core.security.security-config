@@ -49,7 +49,7 @@ function testSystemDASLR {
         echoI "$line"
         file_ret=""
         grep_ret=""
-        file_ret=`$utils_dir/file $line`
+        file_ret=`$FILE $line`
         grep_ret=`echo $file_ret | $GREP -i "executable" | $GREP "ELF" | $GREP -v "script"`
 
         total_cnt=$((total_cnt+1))

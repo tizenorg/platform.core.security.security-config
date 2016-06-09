@@ -9,6 +9,9 @@ Source1:        %{name}.manifest
 BuildRequires:  cmake
 Requires:       shadow-utils
 Requires:       libcap-tools
+Requires:       file
+Requires:       elfutils
+Requires:       libdw
 
 %description
 set of important system configuration and

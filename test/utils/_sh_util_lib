@@ -20,6 +20,8 @@ UNIQ="${BIN}/uniq"
 CP="${BIN}/cp"
 LN="${BIN}/ln"
 LS="${BIN}/ls"
+READELF=`$FIND ${BIN} -name *readelf*`
+FILE="${BIN}/file"
 #========================================================
 # [Directory and file]
 #========================================================

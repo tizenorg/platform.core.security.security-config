@@ -1,10 +1,10 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 #INSTALL UTIL FOR ASLR/DEP TEST
-file(GLOB TESTUTILS "${CMAKE_SOURCE_DIR}/test/utils/${ARCH}/*")
+#file(GLOB TESTUTILS "${CMAKE_SOURCE_DIR}/test/utils/${ARCH}/*")
 INSTALL(FILES
 	_sh_util_lib
-	${TESTUTILS}
+#	${TESTUTILS}
 	DESTINATION
 	/usr/share/security-config/test/utils
 )
