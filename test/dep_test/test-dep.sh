@@ -32,14 +32,14 @@ sdb shell su -c $target_dep_dir/run_dep_test.sh
 
 if [ ! -d $script_dir/log ]; then
     echo "make log dir"
-    $MKDIR $log_dir
+    mkdir $script_dir/log
 else
     echo "log dir exist"
 fi
 
 if [ ! -d $script_dir/result ]; then
     echo "make result dir"
-    $MKDIR $result_dir
+    mkdir $script_dir/result
 else
     echo "result dir exist"
 fi
