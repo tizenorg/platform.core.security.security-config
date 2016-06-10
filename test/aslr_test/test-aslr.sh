@@ -1,37 +1,49 @@
 #!/bin/bash
 #=========================================================
+# [First of All] Get the directory path and name of this script
+#=========================================================
+script_path=$(readlink -f "$0")
+script_dir=`dirname $script_path`                                                                                     
+script_name=`basename $script_path`
+#=========================================================
 # [Includes]
 #=========================================================
-. "/usr/share/security-config/test/utils/_sh_util_lib"
+. "$script_dir/scripts/_sh_util_lib"
+#=========================================================
+# [Variables]
+#=========================================================
+target_base_dir="/usr/share/security-config"
+target_aslr_dir="$target_base_dir/test/aslr_test"
+target_util_dir="$target_base_dir/test/utils"
+target_log_dir="$target_base_dir/log"
+target_result_dir="$target_base_dir/result"
 #=========================================================
 # Script Begin
 #=========================================================
 echoI "Script Begin"
 
-# Rename utils
-file_cmd=`$FIND $utils_dir -name file.*`
-readelf_cmd=`$FIND $utils_dir -name readelf.*`
-if [ "$file_cmd" != "" ]; then
-	$MV $file_cmd $utils_dir/file
-fi
-if [ "$readelf_cmd" != "" ]; then
-	$MV $readelf_cmd $utils_dir/readelf
-fi
+sdb root on
 
-source $aslr_script_dir/scripts/run_aslr_test.sh
+sdb shell mkdir -p $target_aslr_dir
 
-if [ ! -d $log_dir ]; then
+sdb push $script_dir/scripts/* $target_aslr_dir
+
+sdb shell su -c $target_aslr_dir/run_aslr_test.sh
+
+if [ ! -d $script_dir/log ]; then
 	echo "make log dir"
-	$MKDIR $log_dir
+	mkdir $script_dir/log
 else
 	echo "log dir exist"
 fi
-if [ ! -d $result_dir ]; then
+if [ ! -d $script_dir/result ]; then
 	echo "make result dir"
-	$MKDIR $result_dir
+	mkdir $script_dir/result
 else
 	echo "result dir exist"
 fi
-$MV $aslr_script_dir/log.csv $log_dir/aslr_test.log
-$MV $aslr_script_dir/result $result_dir/aslr_test.result
 
+sdb pull $target_log_dir/aslr_test.log $script_dir/log
+sdb pull $target_result_dir/aslr_test.result $script_dir/result
+
+sdb shell rm -rf $target_aslr_dir

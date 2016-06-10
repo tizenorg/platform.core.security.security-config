@@ -17,7 +17,7 @@ file_ret=
 grep_ret=
 fail_cnt=
 tmp_file="$dep_script_dir/tmp.list"
-exception_list="$dep_script_dir/scripts/exception.list"
+exception_list="$dep_script_dir/exception.list"
 function makeInput {
 	$RM $tmp_file
 	$TOUCH $tmp_file
@@ -92,6 +92,56 @@ $TOUCH $log_file
 $RM $result_file
 $TOUCH $result_file
 
+LIBDW="libdw-0.153.so"
+lib_dir=
+# Rename utils
+file_cmd=`$FIND $utils_dir -name file.*`
+readelf_cmd=`$FIND $utils_dir -name readelf.*`
+if [ "$file_cmd" != "" ]; then
+    $MV $file_cmd $utils_dir/file
+fi
+if [ "$readelf_cmd" != "" ]; then
+    $MV $readelf_cmd $utils_dir/readelf
+fi
+
+# Set lib_dir
+if [ -d "/usr/lib64" ]; then
+    lib_dir="/usr/lib64"
+elif [ -d "/usr/lib" ]; then
+    lib_dir="/usr/lib"
+else
+    echo "No proper lib dir"
+    exit 1
+fi
+echo "lib_dir = $lib_dir"
+
+arch_info=`$utils_dir/file $utils_dir/file`
+if [[ $arch_info == *"aarch64"* ]]
+then
+	echo "aarch64!!"
+	arch="aarch64"
+elif [[ $arch_info == *"ARM"* ]]
+then
+	echo "arm!!"
+	arch="arm"
+elif [[ $arch_info == *"x86-64"* ]]
+then
+	echo "x86_64!!"
+	arch="x86_64"
+elif [[ $arch_info == *"Intel"* ]]
+then
+	echo "i386!!"
+	arch="i386"
+fi
+
+# Set required utils
+libdw_lib=`$FIND $dep_script_dir -name utillib.$arch`
+if [ "$libdw_lib" != "" ]; then
+    $MV $libdw_lib $dep_script_dir/"$LIBDW"
+    $CP $dep_script_dir/$LIBDW $lib_dir
+    $LN $lib_dir/$LIBDW $lib_dir/libdw.so.1
+fi
+
 #=========================================================
 # [02] Make List
 #=========================================================
@@ -115,4 +165,23 @@ else
 fi
 echo "================================================================"
 echo ""
+
+if [ ! -d $log_dir ]; then
+    echo "make log dir"
+    $MKDIR $log_dir
+else
+    echo "log dir exist"
+fi
+if [ ! -d $result_dir ]; then
+    echo "make result dir"
+    $MKDIR $result_dir
+else
+    echo "result dir exist"
+fi
+$MV $dep_script_dir/log.csv $log_dir/dep_test.log
+$MV $dep_script_dir/result $result_dir/dep_test.result
+
+if [ "$libdw_lib" != "" ]; then
+	rm $lib_dir/libdw*
+fi
 fnPrintSDone

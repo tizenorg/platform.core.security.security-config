@@ -1,65 +1,50 @@
 #!/bin/bash
 #=========================================================
+# [First of All] Get the directory path and name of this script
+#=========================================================
+script_path=$(readlink -f "$0")
+script_dir=`dirname $script_path`
+script_name=`basename $script_path`
+#=========================================================
 # [Includes]
 #=========================================================
-. "/usr/share/security-config/test/utils/_sh_util_lib"
+. "$script_dir/scripts/_sh_util_lib"
+#=========================================================
+# [Variables]
+#=========================================================
+target_base_dir="/usr/share/security-config"
+target_dep_dir="$target_base_dir/test/dep_test"
+target_util_dir="$target_base_dir/test/utils"
+target_log_dir="$target_base_dir/log"
+target_result_dir="$target_base_dir/result"
 #=========================================================
 # Script Begin
 #=========================================================
 echoI "Script Begin"
-LIBDW="libdw-0.153.so"
-lib_dir=
-# Rename utils
-file_cmd=`$FIND $utils_dir -name file.*`
-readelf_cmd=`$FIND $utils_dir -name readelf.*`
-if [ "$file_cmd" != "" ]; then
-    $MV $file_cmd $utils_dir/file
-fi
-if [ "$readelf_cmd" != "" ]; then
-    $MV $readelf_cmd $utils_dir/readelf
-fi
 
-# Set lib_dir
-if [ -d "/usr/lib64" ]; then
-	lib_dir="/usr/lib64"
-elif [ -d "/usr/lib" ]; then
-	lib_dir="/usr/lib"
-else
-	echo "No proper lib dir"
-	exit 1
-fi
-echo "lib_dir = $lib_dir"
+sdb root on
 
-# Set required utils
-libdw_lib=`$FIND $utils_dir -name utillib.*`
-if [ "$libdw_lib" != "" ]; then
-	$MV $libdw_lib $utils_dir/"$LIBDW"
-    $CP $utils_dir/$LIBDW $lib_dir
-    $LN $lib_dir/$LIBDW $lib_dir/libdw.so.1
-fi
+sdb shell mkdir -p $target_dep_dir
 
-# Run test
-source $dep_script_dir/scripts/01_run_dep_test.sh
+sdb push $script_dir/scripts/* $target_dep_dir
 
-# Move result files
-if [ ! -d $log_dir ]; then
+sdb shell su -c $target_dep_dir/run_dep_test.sh
+
+if [ ! -d $script_dir/log ]; then
     echo "make log dir"
     $MKDIR $log_dir
 else
     echo "log dir exist"
 fi
 
-if [ ! -d $result_dir ]; then
+if [ ! -d $script_dir/result ]; then
     echo "make result dir"
     $MKDIR $result_dir
 else
     echo "result dir exist"
 fi
 
-$MV $dep_script_dir/result $result_dir/dep_test.result
-$MV $dep_script_dir/log.csv $log_dir/dep_test.log
+sdb pull $target_log_dir/dep_test.log $script_dir/log
+sdb pull $target_result_dir/dep_test.result $script_dir/result
 
-# Remove utils
-if [ -a "$lib_dir/$LIBDW" ]; then
-	$RM $lib_dir/libdw*
-fi
+sdb shell rm -rf $target_dep_dir

@@ -13,7 +13,7 @@ echoI "Script Begin"
 tmp_list="$aslr_script_dir/tmp.list"
 all_systemd_executable_list="$aslr_script_dir/all_systemd_executable.list"
 sorted_all_systemd_executable_list="$aslr_script_dir/sorted_all_systemd_executable.list"
-exception_file="$aslr_script_dir/scripts/exception.list"
+exception_file="$aslr_script_dir/exception.list"
 file_ret=
 grep_ret=
 fail_cnt=
@@ -85,6 +85,15 @@ $TOUCH $result_file
 $RM $log_file
 $TOUCH $log_file
 
+# Rename utils
+file_cmd=`$FIND $utils_dir -name file.*`
+if [ "$file_cmd" != "" ]; then
+    $MV $file_cmd $utils_dir/file
+fi
+if [ ! -e $utils_dir/file ]; then
+	echo "There's no file command!!!"
+	exit 1
+fi
 #=========================================================
 # [01] Make input
 #=========================================================
@@ -114,5 +123,20 @@ echo "================================================================"
 echo "TOTAL: $((total_cnt)), NOT APPLIED: $((fail_cnt))"
 echo "================================================================"
 echo ""
+
+if [ ! -d $log_dir ]; then
+    echo "make log dir"
+    $MKDIR $log_dir
+else
+    echo "log dir exist"
+fi
+if [ ! -d $result_dir ]; then
+    echo "make result dir"
+    $MKDIR $result_dir
+else
+    echo "result dir exist"
+fi
+$MV $aslr_script_dir/log.csv $log_dir/aslr_test.log
+$MV $aslr_script_dir/result $result_dir/aslr_test.result
 
 fnPrintSDone

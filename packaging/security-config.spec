@@ -42,9 +42,9 @@ mkdir -p /usr/share/security-config/log
 %attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) /usr/share/security-config/set_capability
 %attr(644,root,root) /usr/lib/tmpfiles.d/security-config.conf
-%attr(755,root,root) /usr/share/security-config/test/aslr_test/*
+#%attr(755,root,root) /usr/share/security-config/test/aslr_test/*
 %attr(755,root,root) /usr/share/security-config/test/utils/*
-%attr(755,root,root) /usr/share/security-config/test/dep_test/*
+#%attr(755,root,root) /usr/share/security-config/test/dep_test/*
 %attr(755,root,root) /usr/share/security-config/test/setuid_test/*
 %attr(755,root,root) /usr/share/security-config/test/smack_rule_test/*
 %attr(755,root,root) /usr/share/security-config/test/root_test/*
