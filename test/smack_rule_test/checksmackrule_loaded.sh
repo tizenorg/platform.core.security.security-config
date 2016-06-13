@@ -302,7 +302,14 @@ function RULE_CHECK
         if [ "$3" == "rxl" ]
         then
             return 0
-        fi 
+        fi
+    # System ^ rwxa
+    elif [ "$1" == "System" ] && [[ "$2" == "^" ]]
+    then
+        if [ "$3" == "rwxa" ]
+        then
+            return 0
+        fi     
     # User _ rxl
     elif [ "$1" == "User" ] && [[ "$2" == "_" ]]
     then
@@ -400,9 +407,9 @@ RULE_CHECK_APPLY_PATH
 
 if [ ! -e $log_file ]
 then
-	/bin/echo "1" >> $result_file
+	/bin/echo "YES" >> $result_file
 else
-	/bin/echo "0" >> $result_file
+	/bin/echo "NO" >> $result_file
 fi
 
 /bin/echo "Generated checksmackrule_loaded.csv / SMACK RULE CHECK FINISHED! "

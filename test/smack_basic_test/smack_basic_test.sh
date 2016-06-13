@@ -15,7 +15,7 @@ function chk_smackfs_mount
 	if [ "$result_smackfs_mount" = "" ]
 	then
 		/bin/echo "Is smackfs mounted? , No" >> $log_file
-		/bin/echo "0" > $result_file
+		/bin/echo "NO" > $result_file
 	else
 		/bin/echo "Is smackfs mounted? , Yes" >> $log_file
 	fi
@@ -43,7 +43,7 @@ function chk_floor_smack_rule
 		/bin/echo "Floor check pass? , Yes" >> $log_file
 	else
 		/bin/echo "Floor check pass? , No" >> $log_file
-		/bin/echo "0" > $result_file
+		/bin/echo "NO" > $result_file
 	fi
 }
 
@@ -57,7 +57,7 @@ function chk_long_label
 		/bin/echo "Is /sys/fs/smackfs/load2 existed?, Yes" >> $log_file
 	else
 		/bin/echo "Is /sys/fs/smackfs/load2 existed?, No" >> $log_file
-		/bin/echo "0" > $result_file
+		/bin/echo "NO" > $result_file
 	fi
 	
 	if [ -e "$smackfs_path/access2" ]
@@ -65,7 +65,7 @@ function chk_long_label
 		/bin/echo "Is /sys/fs/smackfs/access2 existed?, Yes" >> $log_file
 	else
 		/bin/echo "Is /sys/fs/smackfs/access2 existed?, No" >> $log_file
-		/bin/echo "0" > $result_file
+		/bin/echo "NO" > $result_file
 	fi
 }
 
@@ -78,7 +78,7 @@ function chk_netlabel
 		/bin/echo "Is /sys/fs/smackfs/netlabel existed?, Yes" >> $log_file
 	else
 		/bin/echo "Is /sys/fs/smackfs/netlabel existed?, No" >> $log_file
-		/bin/echo "0" > $result_file
+		/bin/echo "NO" > $result_file
 	fi
 	
 	if [ -e "$smackfs_path/ambient" ]
@@ -86,7 +86,7 @@ function chk_netlabel
 		/bin/echo "Is /sys/fs/smackfs/ambient existed?, Yes" >> $log_file
 	else
 		/bin/echo "Is /sys/fs/smackfs/ambient existed?, No" >> $log_file
-		/bin/echo "0" > $result_file
+		/bin/echo "NO" > $result_file
 	fi
 }
 
@@ -100,7 +100,7 @@ function chk_ptrace
 	then
 		/bin/echo "Read sys/fs/smackfs/ptrace , 0 - default" >> $log_file
 		# TODO : Below should be enabled later.
-		#/bin/echo "0" > $result_file
+		#/bin/echo "NO" > $result_file
 	elif [ $ptrace_read -eq 1 ]
 	then
 		/bin/echo "Read sys/fs/smackfs/ptrace , 1 - exact" >> $log_file
@@ -109,7 +109,7 @@ function chk_ptrace
 		/bin/echo "Read sys/fs/smackfs/ptrace , 2 - draconian" >> $log_file
 	else
 		/bin/echo "Read sys/fs/smackfs/ptrace , $ptrace_read : invalid value" >> $log_file
-		/bin/echo "0" > $result_file		
+		/bin/echo "NO" > $result_file		
 	fi
 }
 
@@ -125,7 +125,7 @@ function chk_unconfined
 			/bin/echo "unconfied file is existed. But it is empty." >> $log_file
 		else
 			/bin/echo "unconfied file is existed. And it is not empty." >> $log_file
-			/bin/echo "0" > $result_file
+			/bin/echo "NO" > $result_file
 		fi
 	else
 		/bin/echo "unconfied file is not existed." >> $log_file
@@ -148,7 +148,7 @@ then
 	/bin/rm $log_file
 fi
 
-/bin/echo "1" > $result_file
+/bin/echo "YES" > $result_file
 chk_smackfs_mount
 chk_floor_smack_rule
 chk_long_label

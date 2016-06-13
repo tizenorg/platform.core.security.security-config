@@ -107,9 +107,9 @@ SMACK_LABEL_CHECK
 
 if [ ! -e $log_file ]
 then
-	/bin/echo "1" >> $result_file
+	/bin/echo "YES" >> $result_file
 else
-	/bin/echo "0" >> $result_file
+	/bin/echo "NO" >> $result_file
 fi
 
 /bin/echo "SMACK LABEL CHECK FINISHED!"
