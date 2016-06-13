@@ -26,13 +26,13 @@ function check_string
 	tempval=0
 	while read line1
 	do
-		numofquot=$(echo "$line1" | grep -o "\"" | wc -w)
+		numofquot=$(/bin/echo "$line1" | /bin/grep -o "\"" | /bin/wc -w)
 		numofquot_mod=$(/bin/expr $numofquot % 2)
 		if [ $numofquot_mod -eq 1 ]
 		then
 
 		tempval=$(/bin/expr $tempval + 1)
-		num1=$(echo "$line1" | /bin/cut -d ":" -f1)
+		num1=$(/bin/echo "$line1" | /bin/cut -d ":" -f1)
 		if [ $num1 -gt $2 ]
 		then
 			tempval_mod=$(/bin/expr $tempval % 2)
