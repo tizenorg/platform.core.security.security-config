@@ -19,7 +19,8 @@ setup files, such as passwd, group, and profile.
 
 %build
 
-%cmake . -DARCH=%{_arch}
+%cmake . -DARCH=%{_arch} \
+	-DPROFILE=%{profile}
 
 %install
 rm -rf %{buildroot}
