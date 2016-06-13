@@ -12,6 +12,7 @@ INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/group_id_setting DESTINATION /usr/share
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/labeling/set_label DESTINATION /usr/share/security-config)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/set_capability DESTINATION /usr/share/security-config)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/security-config.conf DESTINATION /usr/lib/tmpfiles.d/)
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/90_user-content-permissions.post DESTINATION ${SYSCONF_INSTALL_DIR}/gumd/useradd.d)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/91_user-dbspace-permissions.post DESTINATION ${SYSCONF_INSTALL_DIR}/gumd/useradd.d)
 
 INSTALL(FILES
