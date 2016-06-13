@@ -53,4 +53,5 @@ mkdir -p /usr/share/security-config/log
 %attr(755,root,root) /usr/share/security-config/test/path_check_test/*
 %attr(755,root,root) /usr/share/security-config/test/smack_basic_test/*
 %attr(755,root,root) /usr/share/security-config/test/security_mount_option_test/*
+%attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/90_user-content-permissions.post
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
