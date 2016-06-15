@@ -13,9 +13,10 @@ retval1=-1
 retval2=-1
 
 # Get all commands
+# Remove builtin cmds
 function generate_cmd_list 
 {
-	/bin/find -L /bin /sbin -type f >> $cmd_list_path
+	/bin/find -L /bin /sbin -type f | /bin/grep -v -e "/bin/echo" -e "/bin/printf" -e "/bin/pushd" -e "/bin/kill" -e "/bin/pwd" -e "/bin/test" >> $cmd_list_path
 }
 
 # check whether this is one of characters in string varialbe or not
