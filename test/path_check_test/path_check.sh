@@ -86,7 +86,7 @@ function PATH_CHECK
 					check_string $1 $line_num # string check
 					if [ "$retval2" -eq 0 ]
 					then
-						/bin/echo "file name = $1 , cmd = $cmd_list_line" >> $log_file 
+						/bin/echo "file name = $1 , cmd = $command_except_path" >> $log_file 
 						/bin/echo "line = " $line_filtered >> $log_file
 						/bin/echo "" >> $log_file
 					fi					 
@@ -99,7 +99,7 @@ function PATH_CHECK
 
 function CHECK
 {
-	/bin/find /usr /opt /etc -type f -exec $utl_path/file {} \; 2>/dev/null | /bin/grep "shell script" | /bin/cut -d ":" -f1 >> $script_list_path
+	/bin/find /usr/bin /usr/sbin -type f -exec $utl_path/file {} \; 2>/dev/null | /bin/grep "shell script" | /bin/cut -d ":" -f1 >> $script_list_path
 	
 	while read script_file_line
 	do
