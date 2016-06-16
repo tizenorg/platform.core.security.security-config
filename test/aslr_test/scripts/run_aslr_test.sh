@@ -43,7 +43,6 @@ function makeInput {
 
 function sortInput {
 
-    #sdb pull /opt/usr/tc/aslr/$all_systemd_dbus_executable_list
     $SORT $all_systemd_dbus_executable_list > $tmp_list
     $CAT $tmp_list | $UNIQ > $sorted_all_systemd_dbus_executable_list
     $RM $tmp_list
@@ -63,7 +62,6 @@ function testSystemDASLR {
 
         if [ ! "$grep_ret" ]; then
             echoS "$line, OK"
-            echo "$line"",OK" >> $log_file
         else
             is_exception="false"
             while read line2; do
@@ -73,7 +71,6 @@ function testSystemDASLR {
             done < $exception_file
             if [ "$is_exception" = "true" ]; then
                 echoS "$line"", OK - Not a target of ASLR test"
-                echo "$line"",OK - Not a target of ASLR test" >> $log_file
             else
                 echoE "$line, NOK"
                 echo "$line"",NOK" >> $log_file
@@ -123,6 +120,7 @@ testSystemDASLR
 
 if [ $((fail_cnt)) -lt 1 ]; then
     echo "YES" > $result_file
+	$RM $log_file
 else
     echo "NO" > $result_file
 fi
@@ -143,7 +141,9 @@ if [ ! -d $result_dir ]; then
 else
     echo "result dir exist"
 fi
-$MV $aslr_script_dir/log.csv $log_dir/aslr_test.log
+if [ -a $aslr_script_dir/log.csv ]; then
+	$MV $aslr_script_dir/log.csv $log_dir/aslr_test.log
+fi
 $MV $aslr_script_dir/result $result_dir/aslr_test.result
 
 fnPrintSDone
