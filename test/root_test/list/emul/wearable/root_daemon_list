@@ -31,3 +31,11 @@ org.tizen.account.manager.service,dbus
 net.connman.service,dbus
 net.connman.vpn.service,dbus
 net.netconfig.service,dbus
+app2sd-server.service,systemd
+askuser.service,systemd
+connman-vpn.service,systemd
+csr.service,systemd
+mobileap-agent.service,systemd
+package-manager.service,systemd
+pkgdir-tool.service,systemd
+wifi-direct-manager.service,systemd

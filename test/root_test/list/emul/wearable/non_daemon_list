@@ -5,14 +5,12 @@ alsa-store.service,systemd
 autovt@.service,systemd
 bluetooth-address.service,systemd
 boot-animation.service,systemd
-connman-vpn.service,systemd
 console-getty.service,systemd
 console-shell.service,systemd
 container-getty@.service,systemd
 dbus-org.freedesktop.hostname1.service,systemd
 dbus-org.freedesktop.locale1.service,systemd
 dbus-org.freedesktop.machine1.service,systemd
-dbus-org.freedesktop.timedate1.service,systemd
 debug-shell.service,systemd
 deviced-pre.service,systemd
 display-manager.service,systemd
@@ -63,7 +61,6 @@ systemd-poweroff.service,systemd
 systemd-quotacheck.service,systemd
 systemd-reboot.service,systemd
 systemd-remount-fs.service,systemd
-systemd-rfkill@.service,systemd
 systemd-shutdownd.service,systemd
 systemd-suspend.service,systemd
 systemd-sysctl.service,systemd
@@ -89,5 +86,4 @@ org.bluez.hf_agent.service,dbus
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.machine1.service,dbus
-org.freedesktop.timedate1.service,dbus
 org.projectx.bt_core.service,dbus
