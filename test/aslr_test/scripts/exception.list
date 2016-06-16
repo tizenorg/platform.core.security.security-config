@@ -18,8 +18,7 @@
 /usr/bin/touch
 /usr/sbin/sulogin
 
+/usr/bin/askuser
 /usr/bin/efl_config
-/usr/bin/nether
-/usr/bin/vpnsvc-daemon
-/usr/bin/vmodem_x86
-/usr/bin/d2d-conv-managerd
+/usr/bin/pkgdir-tool
+/usr/bin/pkgmgr-server

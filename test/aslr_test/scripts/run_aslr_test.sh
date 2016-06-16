@@ -11,8 +11,8 @@ echoI "Script Begin"
 # [Variable]
 #=========================================================
 tmp_list="$aslr_script_dir/tmp.list"
-all_systemd_executable_list="$aslr_script_dir/all_systemd_executable.list"
-sorted_all_systemd_executable_list="$aslr_script_dir/sorted_all_systemd_executable.list"
+all_systemd_dbus_executable_list="$aslr_script_dir/all_systemd_dbus_executable.list"
+sorted_all_systemd_dbus_executable_list="$aslr_script_dir/sorted_all_systemd_dbus_executable.list"
 exception_file="$aslr_script_dir/exception.list"
 file_ret=
 grep_ret=
@@ -23,24 +23,31 @@ log_file="$aslr_script_dir/log.csv"
 is_exception=
 
 function makeInput {
-	$RM $all_systemd_executable_list
-	$TOUCH $all_systemd_executable_list
+	$RM $all_systemd_dbus_executable_list
+	$TOUCH $all_systemd_dbus_executable_list
 	$TOUCH $tmp_list
 	$FIND /usr/lib/systemd/ -name *.service | $XARGS $GREP "ExecStart" | $GREP -v "#ExecStart" > $tmp_list
 	$SED -i 's/  / /g' $tmp_list
 	$SED -i 's/ = /=/g' $tmp_list
 	$SED -i 's/\-\//\//g' $tmp_list
-	$CAT $tmp_list | $CUT -d "=" -f 2 | $CUT -d " " -f 1 > $all_systemd_executable_list
+	$CAT $tmp_list | $CUT -d "=" -f 2 | $CUT -d " " -f 1 > $all_systemd_dbus_executable_list
 	$RM $tmp_list
+	$TOUCH $tmp_list
+    $FIND /usr/share/dbus-1/ -name *.service | $XARGS $GREP "ExecStart" | $GREP -v "#ExecStart" > $tmp_list
+    $SED -i 's/  / /g' $tmp_list
+    $SED -i 's/ = /=/g' $tmp_list
+    $SED -i 's/\-\//\//g' $tmp_list
+    $CAT $tmp_list | $CUT -d "=" -f 2 | $CUT -d " " -f 1 >> $all_systemd_dbus_executable_list
+    $RM $tmp_list
 }
 
 function sortInput {
 
-    #sdb pull /opt/usr/tc/aslr/$all_systemd_executable_list
-    $SORT $all_systemd_executable_list > $tmp_list
-    $CAT $tmp_list | $UNIQ > $sorted_all_systemd_executable_list
+    #sdb pull /opt/usr/tc/aslr/$all_systemd_dbus_executable_list
+    $SORT $all_systemd_dbus_executable_list > $tmp_list
+    $CAT $tmp_list | $UNIQ > $sorted_all_systemd_dbus_executable_list
     $RM $tmp_list
-    $RM $all_systemd_executable_list
+    $RM $all_systemd_dbus_executable_list
 }
 
 function testSystemDASLR {
@@ -73,8 +80,8 @@ function testSystemDASLR {
                 fail_cnt=$((fail_cnt+1))
             fi
         fi
-    done < $sorted_all_systemd_executable_list
-	$RM $sorted_all_systemd_executable_list
+    done < $sorted_all_systemd_dbus_executable_list
+	$RM $sorted_all_systemd_dbus_executable_list
 }
 #=========================================================
 # [00] Remove previous result
