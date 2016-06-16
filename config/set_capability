@@ -37,3 +37,12 @@
 #			client would be another service daemon and application
 
 /usr/sbin/setcap cap_dac_override=eip /usr/bin/media-server
+
+# Package		csr-server
+# Owner 		Kyungwook Tak(k.tak@samsung.com)
+# Date			June 17, 2016
+# Required		cap_dac_override, cap_fowner
+# cap_dac_override	csr-server needs to access application's directory for scanning and removing file
+# cap_fowner		csr-server needs to remove files set with sticky bit in /tmp (rwxrwxrwt)
+
+/usr/sbin/setcap cap_dac_override,cap_fowner=eip /usr/bin/csr-server
