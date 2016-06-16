@@ -63,7 +63,6 @@ function testDEP {
 
     	if [ ! "$grep_ret" ]; then
 			echoS "$line, OK"
-        	echo "$line"",OK" >> $log_file
 		else
 			is_exception="false"
 			while read line2; do
@@ -73,7 +72,6 @@ function testDEP {
 			done < $exception_list
 			if [ "$is_exception" = "true" ]; then
 				echoS "$line"", OK - Not a target of DEP test"
-				echo "$line"",OK - Not a target of DEP test" >> $log_file
 			else
 				echoE "$line, NOK"
 				echo "$line"",NOK" >> $log_file
@@ -156,9 +154,10 @@ echoI "Test DEP"
 
 testDEP
 echo "================================================================"
-if [ $((fail_cnt)) -lt 0 ]; then
+if [ $((fail_cnt)) -lt 1 ]; then
 	echo "NO STACK RWE"
 	echo "YES" > $result_file
+	$RM $log_file
 else
 	echo "STACK RWE: $((fail_cnt))"
 	echo "NO" > $result_file
@@ -178,7 +177,9 @@ if [ ! -d $result_dir ]; then
 else
     echo "result dir exist"
 fi
-$MV $dep_script_dir/log.csv $log_dir/dep_test.log
+if [ -a $dep_script_dir/log.csv ]; then
+	$MV $dep_script_dir/log.csv $log_dir/dep_test.log
+fi
 $MV $dep_script_dir/result $result_dir/dep_test.result
 
 if [ "$libdw_lib" != "" ]; then
