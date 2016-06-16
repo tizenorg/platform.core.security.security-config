@@ -17,15 +17,19 @@ file_ret=
 grep_ret=
 fail_cnt=
 tmp_file="$dep_script_dir/tmp.list"
+tmp2_file="$dep_script_dir/tmp2.list"
 exception_list="$dep_script_dir/exception.list"
 function makeInput {
 	$RM $tmp_file
 	$TOUCH $tmp_file
+	$RM $tmp2_file
+	$TOUCH $tmp2_file
 	$RM $input_file
 	$TOUCH $input_file
 	# Find executable and .so*
-	$FIND / -type f -perm +111 > $tmp_file
-	$FIND / -name *.so >> $tmp_file
+	$FIND / -type f -perm +111 > $tmp2_file
+	$FIND / -name *.so >> $tmp2_file
+	$CAT $tmp2_file | $SORT | $UNIQ > $tmp_file
 	# Remove proc sys dev tmp run
 	$SED -i '/^\/proc\//d' $tmp_file
 	$SED -i '/^\/sys\//d' $tmp_file
@@ -52,6 +56,7 @@ function makeInput {
 		$utils_dir/file $line | $GREP "ELF" | $CUT -d ":" -f 1 >> $input_file
 	done < $tmp_file
 	$RM $tmp_file
+	$RM $tmp2_file
 }
 
 function testDEP {
@@ -63,7 +68,6 @@ function testDEP {
 
     	if [ ! "$grep_ret" ]; then
 			echoS "$line, OK"
-        	echo "$line"",OK" >> $log_file
 		else
 			is_exception="false"
 			while read line2; do
@@ -73,7 +77,6 @@ function testDEP {
 			done < $exception_list
 			if [ "$is_exception" = "true" ]; then
 				echoS "$line"", OK - Not a target of DEP test"
-				echo "$line"",OK - Not a target of DEP test" >> $log_file
 			else
 				echoE "$line, NOK"
 				echo "$line"",NOK" >> $log_file
@@ -156,9 +159,10 @@ echoI "Test DEP"
 
 testDEP
 echo "================================================================"
-if [ $((fail_cnt)) -lt 0 ]; then
+if [ $((fail_cnt)) -lt 1 ]; then
 	echo "NO STACK RWE"
 	echo "YES" > $result_file
+	$RM $log_file
 else
 	echo "STACK RWE: $((fail_cnt))"
 	echo "NO" > $result_file
@@ -178,7 +182,9 @@ if [ ! -d $result_dir ]; then
 else
     echo "result dir exist"
 fi
-$MV $dep_script_dir/log.csv $log_dir/dep_test.log
+if [ -a $dep_script_dir/log.csv ]; then
+	$MV $dep_script_dir/log.csv $log_dir/dep_test.log
+fi
 $MV $dep_script_dir/result $result_dir/dep_test.result
 
 if [ "$libdw_lib" != "" ]; then

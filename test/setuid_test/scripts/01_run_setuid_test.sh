@@ -54,12 +54,13 @@ echo "#FILE, #PERM, #USER, #GROUP" >>$log_file
 echoI "Test setuid"
 
 testSetuid
-if [ $((setuid_cnt)) -lt 0 ]; then
+if [ $((setuid_cnt)) -lt 1 ]; then
 	echo "================================================================"
     echo "NO UNPROPER SUID SET"
     echo "================================================================"
     echo ""
 	echo "YES" > $result_file
+	$RM $log_file
 else
 	echo "================================================================"
 	echo "UNPROPER SUID SET: $((setuid_cnt))"
