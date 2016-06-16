@@ -37,3 +37,11 @@
 #			client would be another service daemon and application
 
 /usr/sbin/setcap cap_dac_override=eip /usr/bin/media-server
+
+# Package		csr-server
+# Owner 		Kyungwook Tak(k.tak@samsung.com)
+# Date			June 16, 2016
+# Required		cap_dac_read_search
+# cap_dac_read_search	csr-server needs to access application's directory for scanning(only read)
+
+/usr/sbin/setcap cap_dac_read_search=eip /usr/bin/csr-server
