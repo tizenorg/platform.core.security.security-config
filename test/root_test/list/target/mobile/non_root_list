@@ -23,7 +23,6 @@ sound-server.service,systemd,multimedia_fw,multimedia_fw
 telephony-daemon.service,systemd,telephony,telephony
 org.tizen.data-provider-master.service,dbus,app_fw,app_fw
 org.tizen.PhonenumberUtils.dbus.service,dbus,service_fw,service_fw
-org.bluetooth.share.service,dbus,network_fw,network_fw
 org.bluez.ag_agent.service,dbus,network_fw,network_fw
 org.projectx.bt.service,dbus,owner,users
 org.tizen.alarm.manager.service,dbus,app_fw,app_fw
