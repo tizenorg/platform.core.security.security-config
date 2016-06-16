@@ -11,7 +11,8 @@ function check_tmp
 	if [ "$chk_tmp" = "" ]
 	then
 		/bin/echo "Does /tmp folder have noexec & nosuid & nodev options? , NO" >> $log_file
-		/bin/echo "NO" > $result_file
+		# TODO : the below should be enabled later. For now, this is the exception.		
+		# /bin/echo "NO" > $result_file
 	else
 		/bin/echo "Does /tmp folder have noexec & nosuid & nodev options? , YES" >> $log_file
 	fi
@@ -56,6 +57,11 @@ fi
 /bin/echo "YES" > $result_file
 check_tmp
 check_run
+
+if [ "$(/bin/cat $result_file)" = "YES" ]
+then
+	/bin/rm $log_file
+fi
 
 /bin/echo "Security_mount_optione test is finished"
 

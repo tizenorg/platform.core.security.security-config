@@ -156,4 +156,10 @@ chk_netlabel
 chk_ptrace
 chk_unconfined
 
+if [ "$(/bin/cat $result_file)" = "YES" ]
+then
+	/bin/rm $log_file
+fi
+
+/bin/echo "Smack basic test is finished"
 
