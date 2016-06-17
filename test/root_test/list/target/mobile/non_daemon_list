@@ -87,4 +87,3 @@ org.freedesktop.machine1.service,dbus
 org.tizen.scmirroring.server.service,dbus
 org.bluez.pb_agent.service,dbus
 org.projectx.bt_core.service,dbus
-org.bluetooth.share.service,dbus

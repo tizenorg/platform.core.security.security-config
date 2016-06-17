@@ -5,17 +5,11 @@ DBUS_PATH="/usr/share/dbus-1/system-services/"
 ROOT_LIST="/usr/share/security-config/test/root_test/root_daemon_list"
 NON_DAEMON_LIST="/usr/share/security-config/test/root_test/non_daemon_list"
 NON_ROOT_LIST="/usr/share/security-config/test/root_test/non_root_list"
-
+EXCEPTION_LIST="/usr/share/security-config/test/root_test/exception_list"
 LOG_NEW_SERVICE="/usr/share/security-config/log/root_test_new_service.log"
 LOG_DELETED_DERVICE="/usr/share/security-config/log/root_test_deleted_service.log"
 RESULT_NEW_SERVICE="/usr/share/security-config/result/root_test_new_service.result"
 RESULT_DELETED_DERVICE="/usr/share/security-config/result/root_test_deleted_service.result"
-
-#SYSTEMD_PATH="/home/keeho/root_minimization/systemd/system/"
-#DBUS_PATH="/home/keeho/root_minimization/dbus-1/system-services/"
-#ROOT_LIST="/home/keeho/root_minimization/root_daemon_list"
-#NON_DAEMON_LIST="/keeho/root_minimization/non_daemon_list"
-#NON_ROOT_LIST="/home/keeho/root_minimization/non_root_list"
 
 checkServiceFile(){
 	# $1 : service_name
@@ -42,6 +36,15 @@ checkServiceFile(){
 
 	# Try to find non-root daemon service
 	for line in $(/bin/cat $NON_ROOT_LIST)
+	do
+		service_name=`/bin/echo $line | /usr/bin/awk -F "," '{print $1}'`
+		if [ $1 = $service_name ]; then
+			return 0
+		fi
+	done
+
+	# Try to find exception case
+	for line in $(/bin/cat $EXCEPTION_LIST)
 	do
 		service_name=`/bin/echo $line | /usr/bin/awk -F "," '{print $1}'`
 		if [ $1 = $service_name ]; then
@@ -94,7 +97,7 @@ checkList() {
 	fi
 }
 
-# Let's start service check whether service is root or not from here
+# Let's start service check whether service is added or removed
 if [ -f $LOG_NEW_SERVICE ]; then
    /bin/rm $LOG_NEW_SERVICE
 fi
@@ -130,7 +133,6 @@ done
 /bin/echo "Check Delete Service"
 /bin/echo "########################################"
 
-#for entry in $(/bin/cat /home/seong/workspace/root_minimization/root_daemon_list)
 for entry in $(/bin/cat $ROOT_LIST)
 do
 	service_name=`/bin/echo $entry | awk -F "," '{print $1}'`
