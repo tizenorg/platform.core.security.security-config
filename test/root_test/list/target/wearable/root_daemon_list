@@ -1,5 +1,4 @@
 accounts-service.service,systemd
-browser-provider.service,systemd
 connman.service,systemd
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
@@ -19,11 +18,9 @@ systemd-udevd.service,systemd
 tlm.service,systemd
 umount-opt.service,systemd
 user@.service,systemd
-vpnsvc-daemon.service,systemd
 org.freedesktop.login1.service,dbus
 org.freedesktop.systemd1.service,dbus
 org.tizen.app2sd.service,dbus
-org.tizen.vpnsvc.service,dbus
 org.tizen.MobileapAgent.service,dbus
 org.tizen.lbs.Providers.LbsServer.service,dbus
 org.tizen.pkgdir_tool.service,dbus
@@ -35,9 +32,7 @@ net.connman.service,dbus
 net.connman.vpn.service,dbus
 net.netconfig.service,dbus
 app2sd-server.service,systemd
-askuser.service,systemd
 connman-vpn.service,systemd
-csr.service,systemd
 mobileap-agent.service,systemd
 package-manager.service,systemd
 pkgdir-tool.service,systemd

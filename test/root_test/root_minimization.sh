@@ -127,27 +127,30 @@ checkNonRootList(){
 	do
 		# awk filters 1st value from "," e.g alarm-server.service,systemd
 		service_name=`/bin/echo $line | /usr/bin/awk -F "," '{print $1}'`
+		exception_case=`/bin/echo $line | /usr/bin/awk -F "," '{print $3}'`
 		if [ $1 = $service_name ]; then
-			service_type=`/bin/echo $line | /usr/bin/awk -F "," '{print $2}'`
-			service_uid=`/bin/echo $line | /usr/bin/awk -F "," '{print $3}'`
-			service_gid=`/bin/echo $line | /usr/bin/awk -F "," '{print $4}'`
+			if [ "$exception_case" = "ONLY_USER_ID" -o "$exception_case" = "ONLY_GROUP_ID" -o "$exception_case" = "ID_DEFINED_IN_CODE" ]; then
+				service_type=`/bin/echo $line | /usr/bin/awk -F "," '{print $2}'`
+				service_uid=`/bin/echo $line | /usr/bin/awk -F "," '{print $4}'`
+				service_gid=`/bin/echo $line | /usr/bin/awk -F "," '{print $5}'`
 
-			/bin/echo "## $1 is in exception_list"
-			if [ $2 = "systemd" ]; then
-				process_uid=`/bin/ps -ef | /bin/grep $exec_name_systemd | /bin/grep -v grep | /usr/bin/awk -F " " '{print $1}'`
-			elif [ $2 = "dbus" ]; then
-				process_uid=`/bin/ps -ef | /bin/grep $exec_name_dbus | /bin/grep -v grep | /usr/bin/awk -F " " '{print $1}'`
-			fi
+				/bin/echo "## $1 is in exception_list"
+				if [ $2 = "systemd" ]; then
+					process_uid=`/bin/ps -ef | /bin/grep $exec_name_systemd | /bin/grep -v grep | /usr/bin/awk -F " " '{print $1}'`
+				elif [ $2 = "dbus" ]; then
+					process_uid=`/bin/ps -ef | /bin/grep $exec_name_dbus | /bin/grep -v grep | /usr/bin/awk -F " " '{print $1}'`
+				fi
 
-			if [ $service_uid = $process_uid ]; then
-				/bin/echo "##Success, expected uid is $service_uid, and real uid is $process_uid, it is appropriate uid"
-				/bin/echo "============================================================================================"
-			else
-				/bin/echo "@@Failed, expected uid is $service_uid, but real uid is $process_uid, it is not appropriate uid"
-				/bin/echo "$1($2), expected uid is $service_uid, but real uid is $process_uid, it is not appropriate uid" >> $LOG_FAILED_SERVICES
-				/bin/echo "=============================================================================================" >> $LOG_FAILED_SERVICES
+				if [ $service_uid = $process_uid ]; then
+					/bin/echo "##Success, expected uid is $service_uid, and real uid is $process_uid, it is appropriate uid"
+					/bin/echo "============================================================================================"
+				else
+					/bin/echo "@@Failed, expected uid is $service_uid, but real uid is $process_uid, it is not appropriate uid"
+					/bin/echo "$1($2), expected uid is $service_uid, but real uid is $process_uid, it is not appropriate uid" >> $LOG_FAILED_SERVICES
+					/bin/echo "=============================================================================================" >> $LOG_FAILED_SERVICES
+				fi
+					return 0
 			fi
-				return 0
 		fi
 	done
 
@@ -328,6 +331,20 @@ checkServiceFile(){
 		fi
 	done
 
+	# Try to find exception case
+	for line in $(/bin/cat $EXCEPTION_LIST)
+	do
+		service_name=`/bin/echo $line | /usr/bin/awk -F "," '{print $1}'`
+		exception_case=`/bin/echo $line | /usr/bin/awk -F "," '{print $3}'`
+		if [ $1 = $service_name ]; then
+			if [ "$exception_case" = "EXCEPTED" ]; then
+				/bin/echo "## $1 is in exception_list"
+				/bin/echo "===================================================="
+				# stop below code lines and retrun success to find
+				return 0
+			fi
+		fi
+	done
 
 	# Try to find non-root daemon service
 	for line in $(/bin/cat $NON_ROOT_LIST)

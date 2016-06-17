@@ -34,8 +34,6 @@ security-manager-rules-loader.service,systemd
 serial-getty@.service,systemd
 shutdown-animation.service,systemd
 silent-animation.service,systemd
-sshd.service,systemd
-sshd@.service,systemd
 systemd-ask-password-console.service,systemd
 systemd-ask-password-wall.service,systemd
 systemd-binfmt.service,systemd
@@ -64,7 +62,6 @@ systemd-remount-fs.service,systemd
 systemd-shutdownd.service,systemd
 systemd-suspend.service,systemd
 systemd-sysctl.service,systemd
-systemd-timedated.service,systemd
 systemd-tmpfiles-clean.service,systemd
 systemd-tmpfiles-setup-dev.service,systemd
 systemd-tmpfiles-setup.service,systemd
