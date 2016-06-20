@@ -18,7 +18,3 @@
 /usr/bin/touch
 /usr/sbin/sulogin
 
-/usr/bin/askuser
-/usr/bin/efl_config
-/usr/bin/pkgdir-tool
-/usr/bin/pkgmgr-server
