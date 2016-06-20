@@ -17,3 +17,4 @@ vpnsvc-daemon.service,systemd
 app2sd-server.service,systemd
 askuser.service,systemd
 mobileap-agent.service,systemd
+pkgdir-tool.service,systemd

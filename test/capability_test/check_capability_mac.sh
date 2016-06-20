@@ -3,8 +3,8 @@
 SYSTEMD_PATH="/usr/lib/systemd/system"
 ROOT_LIST="/usr/share/security-config/test/capability_test/root_daemon_list"
 EXCEPTION_LIST="/usr/share/security-config/test/capability_test/cap_mac_exception_list"
-LOG_CAP_MAC_CHECK="/usr/share/security-config/log/log_cap_mac_check"
-RESULT_CAP_MAC_CHECK="/usr/share/security-config/result/result_cap_mac_check"
+LOG_CAP_MAC_CHECK="/usr/share/security-config/log/log_cap_mac_check.log"
+RESULT_CAP_MAC_CHECK="/usr/share/security-config/result/result_cap_mac_check.result"
 
 checkExceptionList(){
 
