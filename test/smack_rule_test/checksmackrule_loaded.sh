@@ -412,4 +412,4 @@ else
 	/bin/echo "NO" >> $result_file
 fi
 
-/bin/echo "Generated checksmackrule_loaded.csv / SMACK RULE CHECK FINISHED! "
+/bin/echo "SMACK RULE CHECK FINISHED! "
