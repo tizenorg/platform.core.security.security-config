@@ -11,28 +11,30 @@ function check_tmp
 	if [ "$chk_tmp" = "" ]
 	then
 		/bin/echo "Does /tmp folder have noexec & nosuid & nodev options? , NO" >> $log_file
-		# TODO : the below should be enabled later. For now, this is the exception.		
-		# /bin/echo "NO" > $result_file
+		/bin/echo "NO" > $result_file
 	else
 		/bin/echo "Does /tmp folder have noexec & nosuid & nodev options? , YES" >> $log_file
 	fi
 }
 
-function check_run
+function check_dev_shm
 {
-	chk_run=$(/bin/cat /proc/mounts | /bin/grep "/run " | /bin/grep "nosuid" | /bin/grep "nodev")
-	if [ "$chk_run" = "" ]
+	chk_dev_shm=$(/bin/cat /proc/mounts | /bin/grep "/dev/shm " | /bin/grep "nosuid" | /bin/grep "noexec" | /bin/grep "nodev")
+	if [ "$chk_dev_shm" = "" ]
 	then
-		/bin/echo "Does /run folder have nosuid & nodev options? , NO" >> $log_file
+		/bin/echo "Does /dev/shm folder have noexec & nosuid & nodev options? , NO" >> $log_file
 		/bin/echo "NO" > $result_file
 	else
-		/bin/echo "Does /run folder have nosuid & nodev options? , YES" >> $log_file
+		/bin/echo "Does /dev/shm folder have noexec & nosuid & nodev options? , YES" >> $log_file
 	fi
+}
 
-	chk_run_user=$(/bin/cat /proc/mounts | /bin/grep "/run/user/5001 " | /bin/grep "nosuid" | /bin/grep "nodev")
-	if [ "$chk_run" = "" ]
+function check_run
+{
+	chk_run_user=$(/bin/cat /proc/mounts | /bin/grep "/run/user/5001 " | /bin/grep "noexec" | /bin/grep "nosuid" | /bin/grep "nodev")
+	if [ "$chk_run_user" = "" ]
 	then
-		/bin/echo "Does /run/user/5001 folder have nosuid & nodev options? , NO" >> $log_file
+		/bin/echo "Does /run/user/5001 folder have noexec & nosuid & nodev options? , NO" >> $log_file
 		/bin/echo "NO" > $result_file
 	else
 		/bin/echo "Does /run/user/5001 folder have nosuid & nodev options? , YES" >> $log_file
@@ -56,6 +58,7 @@ fi
 
 /bin/echo "YES" > $result_file
 check_tmp
+check_dev_shm
 check_run
 
 if [ "$(/bin/cat $result_file)" = "YES" ]
