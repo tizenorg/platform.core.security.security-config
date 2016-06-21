@@ -7,3 +7,6 @@ spreadtrum-utils
 swap
 device::camera
 org.tizen.music-chooser
+system::sys_logging
+device::recording
+csa::dir
