@@ -41,6 +41,27 @@ function check_run
 	fi
 }
 
+function check_sdcard
+{
+	# check whether there is SDCARD
+	chk_sdcard=$(/bin/cat /proc/mounts | /bin/grep "SDCard")
+	if [ "$chk_sdcard" = "" ]
+	then
+		# there is no sdcard on target. skip this function
+		return 1
+	fi	
+
+	# check SDCARD mount option
+	chk_sdcard_mnt=$(/bin/cat /proc/mounts | /bin/grep "SDCard" | /bin/grep "noexec" | /bin/grep "nosuid" | /bin/grep "nodev")
+	if [ "$chk_sdcard_mnt" = "" ]
+	then
+		/bin/echo "Does /opt/media/SDCard* folder have noexec & nosuid & nodev options? , NO" >> $log_file
+		/bin/echo "NO" > $result_file
+	else
+		/bin/echo "Does /opt/media/SDCard* folder have nosuid & nodev options? , YES" >> $log_file
+	fi
+}
+
 if [ ! -d $log_dir ]; then
     /bin/mkdir $log_dir
 fi
@@ -60,6 +81,7 @@ fi
 check_tmp
 check_dev_shm
 check_run
+check_sdcard
 
 if [ "$(/bin/cat $result_file)" = "YES" ]
 then
