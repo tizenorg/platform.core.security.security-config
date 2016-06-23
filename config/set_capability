@@ -9,7 +9,14 @@
 # cap_setuid		set user id per each user logged in
 # cap_setgid		set group id following user id
 
-/usr/sbin/setcap cap_setuid,cap_setgid=eip /usr/sbin/sdbd
+# Owner         Changseok Oh(seok.oh@samsung.com)
+# Date          June 23, 2016
+# Required      cap_setuid, cap_dac_override, cap_sys_admin
+# cap_setuid        set child process's uid to root
+# cap_dac_override	bypass permission check at pull/push
+# cap_sys_admin		remount at rpm installation
+
+/usr/sbin/setcap cap_setuid,cap_setgid,cap_dac_override,cap_sys_admin=eip /usr/sbin/sdbd
 
 # Package		alarm-server
 # Owner 		Jiwoong Im(jiwoong.im@samsung.com)
@@ -46,3 +53,4 @@
 # cap_fowner		csr-server needs to remove files set with sticky bit in /tmp (rwxrwxrwt)
 
 /usr/sbin/setcap cap_dac_override,cap_fowner=eip /usr/bin/csr-server
+
