@@ -3,8 +3,6 @@ alsa-state.service,systemd
 alsa-store.service,systemd
 autovt@.service,systemd
 bluetooth-address.service,systemd
-bluetooth-hci-device.service,systemd
-bluetooth-hciattach@.service,systemd
 boot-animation.service,systemd
 console-getty.service,systemd
 console-shell.service,systemd
@@ -82,5 +80,6 @@ zbooting-done.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.machine1.service,dbus
-org.bluez.hf_agent.service,dbus
+org.tizen.scmirroring.server.service,dbus
+org.bluez.pb_agent.service,dbus
 org.projectx.bt_core.service,dbus
