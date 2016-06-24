@@ -79,7 +79,7 @@ function LABEL_CHECK
 
 function SMACK_LABEL_CHECK
 {
-	/usr/bin/find / -type d 2>/dev/null | while read line  # Remove error print
+	/usr/bin/find / ! -path "/csa*" -type d 2>/dev/null | while read line  # Remove error print
 	do
 		LABEL_CHECK $line 
 	done
