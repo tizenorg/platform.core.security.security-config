@@ -15,6 +15,7 @@ dbus-org.freedesktop.machine1.service,systemd
 debug-shell.service,systemd
 deviced-pre.service,systemd
 display-manager.service,systemd
+dloginit.service,systemd
 emergency.service,systemd
 getty@.service,systemd
 initrd-cleanup.service,systemd
@@ -82,5 +83,6 @@ zbooting-done.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.machine1.service,dbus
-org.bluez.hf_agent.service,dbus
+org.tizen.scmirroring.server.service,dbus
+org.bluez.pb_agent.service,dbus
 org.projectx.bt_core.service,dbus

@@ -1,4 +1,3 @@
-ac-init.service,systemd
 alsa-restore.service,systemd
 alsa-state.service,systemd
 alsa-store.service,systemd
