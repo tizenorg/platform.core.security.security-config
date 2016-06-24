@@ -1,12 +1,1 @@
-system::use_internet,swap,rw
-system::debugging_network,swap,rw
-sdbd,swap,rw
-systemd::script::bt_firmware,wifi-loader,r
-systemd::script::bt_firmware,system::sys_logging,x
-systemd::script::bt_firmware,rfkill,rx
-systemd::script::bt_firmware,procps,rx
-systemd::script::bt_firmware,bt_firmware,rwx
-systemd::script::bt_firmware,bluez,rwx
-dbus,bt_firmware,rwx
-bluez,bt_firmware,rwx
-bt_firmware,bluez,rwx
+empty_

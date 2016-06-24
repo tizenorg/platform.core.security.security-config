@@ -1,13 +1,1 @@
-bluez
-csc-manager
-factory-15
-dfms-kernel
-deviced
-spreadtrum-utils
-swap
-device::camera
-org.tizen.music-chooser
-system::sys_logging
-device::recording
-csa::dir
-Isolated
+empty_
