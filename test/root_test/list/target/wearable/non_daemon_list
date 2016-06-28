@@ -1,9 +1,11 @@
-ac-init.service,systemd
+aul.service,systemd
 alsa-restore.service,systemd
 alsa-state.service,systemd
 alsa-store.service,systemd
 autovt@.service,systemd
 bluetooth-address.service,systemd
+bluetooth-hci-device.service,systemd
+bluetooth-hciattach@.service,systemd
 boot-animation.service,systemd
 console-getty.service,systemd
 console-shell.service,systemd

@@ -1,4 +1,3 @@
-accounts-service.service,systemd
 connman.service,systemd
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
@@ -17,5 +16,4 @@ connman-vpn.service,systemd
 package-manager.service,systemd
 pkgdir-tool.service,systemd
 app2sd-server.service,systemd
-askuser.service,systemd
 mobileap-agent.service,systemd
