@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 SYSTEMD_PATH="/usr/lib/systemd/system/"
 DBUS_PATH="/usr/share/dbus-1/system-services/"
 ROOT_LIST="/usr/share/security-config/test/root_test/root_daemon_list"

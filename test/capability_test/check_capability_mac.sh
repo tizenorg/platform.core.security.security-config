@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 SYSTEMD_PATH="/usr/lib/systemd/system"
 ROOT_LIST="/usr/share/security-config/test/capability_test/root_daemon_list"
 EXCEPTION_LIST="/usr/share/security-config/test/capability_test/cap_mac_exception_list"

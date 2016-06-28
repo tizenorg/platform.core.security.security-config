@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 SMACK_RULE_APPLY_PATH1='/opt/var/security-manager/rules/*'

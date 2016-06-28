@@ -10,6 +10,7 @@ echoI "Script Begin"
 #=========================================================
 # [Variable]
 #=========================================================
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 tmp_list="$aslr_script_dir/tmp.list"
 all_systemd_dbus_executable_list="$aslr_script_dir/all_systemd_dbus_executable.list"
 sorted_all_systemd_dbus_executable_list="$aslr_script_dir/sorted_all_systemd_dbus_executable.list"

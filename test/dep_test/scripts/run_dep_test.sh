@@ -10,6 +10,7 @@ echoI "Script Begin"
 #=========================================================
 # [Variable]
 #=========================================================
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 input_file="$dep_script_dir/elf.list"
 log_file="$dep_script_dir/log.csv"
 result_file="$dep_script_dir/result"
