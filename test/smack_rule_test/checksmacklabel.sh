@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 result_dir="/usr/share/security-config/result"
 log_dir="/usr/share/security-config/log"
 result_file=$result_dir"/checksmacklabel.result"

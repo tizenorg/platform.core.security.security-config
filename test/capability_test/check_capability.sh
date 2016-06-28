@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 USR_BIN_PATH="/usr/bin/"
 OUTPUT_PATH="check_capability.txt"
 #OUTPUT_PATH="/usr/share/security-config/output/root_test/check_capability_usr.txt"

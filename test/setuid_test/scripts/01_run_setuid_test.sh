@@ -6,6 +6,7 @@ echoI "Script Begin"
 #=========================================================
 # [Variable]
 #=========================================================
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 input_file="$suid_script_dir/setuid.list"
 exception_list="$suid_script_dir/scripts/exception.list"
 is_exception=
