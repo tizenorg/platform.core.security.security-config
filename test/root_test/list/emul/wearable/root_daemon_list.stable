@@ -1,9 +1,7 @@
-accounts-service.service,systemd
 connman.service,systemd
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
-download-provider.service,systemd
 emul-common-preinit.service,systemd
 emul-setup-audio-volume.service,systemd
 emuld.service,systemd
@@ -37,4 +35,3 @@ package-manager.service,systemd
 pkgdir-tool.service,systemd
 app2sd-server.service,systemd
 nether.service,systemd
-aul.service,systemd
