@@ -2,7 +2,6 @@ buxton2.service,systemd,ONLY_USER_ID,buxton,buxton
 pulseaudio.service,systemd,ID_DEFINED_IN_CODE,pulse,pulse
 org.bluetooth.share.service,dbus,EXCEPTED
 umount-opt.service,systemd,EXCEPTED
-muse-server.service,systemd,EXCEPTED
 sdbd.service,systemd,EXCEPTED
 sdbd_tcp.service,systemd,EXCEPTED
 bluetooth-share.service,systemd,EXCEPTED

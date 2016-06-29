@@ -18,3 +18,4 @@ pkgdir-tool.service,systemd
 wifi-direct-manager.service,systemd
 app2sd-server.service,systemd
 mobileap-agent.service,systemd
+muse-server.service,systemd

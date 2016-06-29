@@ -14,3 +14,4 @@ user@.service,systemd
 app2sd-server.service,systemd
 mobileap-agent.service,systemd
 pkgdir-tool.service,systemd
+muse-server.service,systemd
