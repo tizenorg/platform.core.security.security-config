@@ -5,3 +5,4 @@ umount-opt.service,systemd,EXCEPTED
 muse-server.service,systemd,EXCEPTED
 sdbd.service,systemd,EXCEPTED
 sdbd_tcp.service,systemd,EXCEPTED
+bluetooth-share.service,systemd,EXCEPTED
