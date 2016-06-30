@@ -67,3 +67,12 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 # cap_lease		Establish leases on arbitrary files
 
 /usr/sbin/setcap cap_chown,cap_dac_override,cap_lease,cap_net_admin,cap_net_raw=eip /usr/bin/msg-server
+
+## Smack labeling
+# Below lines are executed in end of kick start file
+
+/usr/bin/chsmack -a "System::Shared" /etc/.pwd.lock
+/usr/bin/chsmack -a "System::Shared" /etc/passwd*
+/usr/bin/chsmack -a "System::Shared" /etc/group*
+/usr/bin/chsmack -a "System::Shared" /etc/gshadow*
+/usr/bin/chsmack -a "System::Shared" /etc/shadow*
