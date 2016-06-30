@@ -17,3 +17,9 @@ fi
 
 chown :system_share /opt/etc
 chmod 775 /opt/etc
+
+/usr/bin/chsmack -a "System::Shared" /etc/.pwd.lock
+/usr/bin/chsmack -a "System::Shared" /etc/passwd*
+/usr/bin/chsmack -a "System::Shared" /etc/group*
+/usr/bin/chsmack -a "System::Shared" /etc/gshadow*
+/usr/bin/chsmack -a "System::Shared" /etc/shadow*
