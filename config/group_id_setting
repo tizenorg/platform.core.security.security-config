@@ -78,3 +78,4 @@ usr/sbin/usermod -aG system_share pulse
 usr/sbin/usermod -aG system_share log
 usr/sbin/usermod -aG input sensor
 usr/sbin/usermod -aG bt_use network_fw
+usr/sbin/usermod -aG audio telephony
