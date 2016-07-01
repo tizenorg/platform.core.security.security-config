@@ -1,11 +1,9 @@
 buxton2.service,systemd,ONLY_USER_ID,buxton,buxton
 pulseaudio.service,systemd,ID_DEFINED_IN_CODE,pulse,pulse
 org.bluetooth.share.service,dbus,EXCEPTED
-muse-server.service,systemd,EXCEPTED
 sdbd.service,systemd,EXCEPTED
 emul-common-preinit.service,systemd,EXCEPTED
 emul-setup-audio-volume.service,systemd,EXCEPTED
 emuld.service,systemd,EXCEPTED
 vmodem-x86.service,systemd,EXCEPTED
-bluetooth-share.service,systemd,EXCEPTED
 deviced-vibrator.service,systemd,EXCEPTED
