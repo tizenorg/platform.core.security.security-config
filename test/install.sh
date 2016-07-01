@@ -23,6 +23,9 @@ target_smack_rule_test_dir="$target_base_dir/smack_rule_test"
 
 src_setuid_test_dir="$src_base_dir/setuid_test"
 target_setuid_test_dir="$target_base_dir/setuid_test"
+
+src_path_check_test_dir="$src_base_dir/path_check_test"
+target_path_check_test_dir="$target_base_dir/path_check_test"
 #=========================================================
 # Script Begin
 #=========================================================
@@ -79,6 +82,9 @@ sdb push $src_smack_rule_test_dir/*.stable $target_smack_rule_test_dir
 
 # push setuid_test list
 sdb push $src_setuid_test_dir/scripts/*.stable $target_setuid_test_dir/scripts
+
+# push path_check_test list
+sdb push $src_path_check_test_dir/*.stable $target_path_check_test_dir
 
 echo "#========================================================="
 echo "# Set exception lists ... "
