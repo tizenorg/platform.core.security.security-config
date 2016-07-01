@@ -305,6 +305,11 @@ function RULE_CHECK
         then
             return 0
         fi
+        if [ "$3" == "-w----" ]
+        then
+            return 0
+        fi
+
     elif [ "$1" == "System" ] && [[ "$2" == "^" ]]
     then
         if [ "$3" == "rwxa--" ]
