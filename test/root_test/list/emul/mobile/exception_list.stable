@@ -8,3 +8,4 @@ emul-setup-audio-volume.service,systemd,EXCEPTED
 emuld.service,systemd,EXCEPTED
 vmodem-x86.service,systemd,EXCEPTED
 bluetooth-share.service,systemd,EXCEPTED
+deviced-vibrator.service,systemd,EXCEPTED
