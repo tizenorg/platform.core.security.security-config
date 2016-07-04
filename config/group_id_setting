@@ -79,3 +79,4 @@ usr/sbin/usermod -aG system_share log
 usr/sbin/usermod -aG input sensor
 usr/sbin/usermod -aG bt_use network_fw
 usr/sbin/usermod -aG audio telephony
+usr/sbin/usermod -aG display multimedia_fw
