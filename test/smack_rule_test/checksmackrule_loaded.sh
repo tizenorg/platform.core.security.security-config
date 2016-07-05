@@ -304,7 +304,7 @@ function RULE_CHECK
         then
             return 0
         fi
-	if [ "$3" == "w" ]
+	if [ "$3" == "rwx" ]
 	then
 	    return 0
 	fi
