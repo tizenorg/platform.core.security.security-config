@@ -29,3 +29,4 @@ pkgdir-tool.service,systemd
 app2sd-server.service,systemd
 nether.service,systemd
 muse-server.service,systemd
+deviced-vibrator.service,systemd
