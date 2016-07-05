@@ -28,3 +28,5 @@ org.tizen.alarm.manager.service,dbus,app_fw,app_fw
 org.tizen.fido.service,dbus,service_fw,service_fw
 org.tizen.dummyasm.service,dbus,service_fw,service_fw
 org.tizen.system.popup.service,dbus,system_fw,system_fw
+nfc-manager.service,systemd,network_fw,network_fw
+org.tizen.NetNfcService.service,dbus,network_fw,network_fw
