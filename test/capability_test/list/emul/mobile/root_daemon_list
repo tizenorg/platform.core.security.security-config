@@ -19,3 +19,4 @@ app2sd-server.service,systemd
 mobileap-agent.service,systemd
 nether.service,systemd
 muse-server.service,systemd
+deviced-vibrator.service,systemd

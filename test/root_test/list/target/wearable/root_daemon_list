@@ -31,3 +31,4 @@ package-manager.service,systemd
 pkgdir-tool.service,systemd
 wifi-direct-manager.service,systemd
 muse-server.service,systemd
+deviced-vibrator.service,systemd

@@ -22,3 +22,4 @@ modemd.service,systemd
 nvitemd.service,systemd
 wifi-mac-check.service,systemd
 muse-server.service,systemd
+deviced-vibrator.service,systemd
