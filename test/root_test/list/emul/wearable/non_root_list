@@ -30,3 +30,6 @@ org.tizen.dummyasm.service,dbus,service_fw,service_fw
 org.tizen.system.popup.service,dbus,system_fw,system_fw
 nfc-manager.service,systemd,network_fw,network_fw
 org.tizen.NetNfcService.service,dbus,network_fw,network_fw
+org.tizen.lbs.Providers.LbsServer.service,dbus,location,location
+package-manager.service,systemd,app_fw,app_fw
+pkgdir-tool.service,systemd,app_fw,app_fw

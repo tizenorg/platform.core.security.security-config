@@ -13,8 +13,6 @@ systemd-udevd.service,systemd
 tlm.service,systemd
 user@.service,systemd
 connman-vpn.service,systemd
-package-manager.service,systemd
-pkgdir-tool.service,systemd
 app2sd-server.service,systemd
 mobileap-agent.service,systemd
 muse-server.service,systemd
