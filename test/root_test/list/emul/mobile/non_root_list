@@ -2,6 +2,7 @@ accounts-service.service,systemd,service_fw,service_fw
 alarm-server.service,systemd,app_fw,app_fw
 auth-fw.service,systemd,security_fw,security_fw
 bluetooth-frwk.service,systemd,owner,users
+bluetooth-share.service,systemd,owner,users
 browser-provider.service,systemd,web_fw,web_fw
 buxton2.service,systemd,buxton,buxton
 central-key-manager.service,systemd,key-manager,key-manager
