@@ -1,6 +1,3 @@
-buxton2.service,systemd,ONLY_USER_ID,buxton,buxton
-pulseaudio.service,systemd,ID_DEFINED_IN_CODE,pulse,pulse
-sdbd.service,systemd,EXCEPTED
 emul-common-preinit.service,systemd,EXCEPTED
 emul-setup-audio-volume.service,systemd,EXCEPTED
 emuld.service,systemd,EXCEPTED
