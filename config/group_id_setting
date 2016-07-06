@@ -81,3 +81,4 @@ usr/sbin/usermod -aG bt_use network_fw
 usr/sbin/usermod -aG audio telephony
 usr/sbin/usermod -aG display multimedia_fw
 usr/sbin/usermod -aG audio multimedia_fw
+usr/sbin/usermod -aG video multimedia_fw
