@@ -15,7 +15,6 @@ org.freedesktop.login1.service,dbus
 org.freedesktop.systemd1.service,dbus
 org.tizen.app2sd.service,dbus
 org.tizen.MobileapAgent.service,dbus
-org.tizen.lbs.Providers.LbsServer.service,dbus
 org.tizen.pkgdir_tool.service,dbus
 org.tizen.pkgmgr.service,dbus
 org.O1.SecurityAccounts.gUserManagement.service,dbus
@@ -24,8 +23,6 @@ net.connman.vpn.service,dbus
 net.netconfig.service,dbus
 connman-vpn.service,systemd
 mobileap-agent.service,systemd
-package-manager.service,systemd
-pkgdir-tool.service,systemd
 app2sd-server.service,systemd
 nether.service,systemd
 muse-server.service,systemd
