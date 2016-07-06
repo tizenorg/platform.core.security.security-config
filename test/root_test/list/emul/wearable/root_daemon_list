@@ -27,3 +27,4 @@ app2sd-server.service,systemd
 nether.service,systemd
 muse-server.service,systemd
 deviced-vibrator.service,systemd
+sdbd.service,systemd

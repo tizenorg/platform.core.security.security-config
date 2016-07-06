@@ -29,3 +29,5 @@ mobileap-agent.service,systemd
 wifi-direct-manager.service,systemd
 muse-server.service,systemd
 deviced-vibrator.service,systemd
+sdbd.service,systemd
+sdbd_tcp.service,systemd
