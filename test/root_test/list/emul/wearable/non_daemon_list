@@ -78,6 +78,8 @@ tizenid.service,systemd
 ttrace-marker.service,systemd
 webappenc-initializer.service,systemd
 zbooting-done.service,systemd
+security-config.service,systemd
+tizen-fstrim-user.service,systemd
 org.bluez.hf_agent.service,dbus
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus

@@ -10,9 +10,7 @@ systemd-journald.service,systemd
 systemd-logind.service,systemd
 systemd-udevd.service,systemd
 user@.service,systemd
-app2sd-server.service,systemd
 mobileap-agent.service,systemd
-pkgdir-tool.service,systemd
 modemd.service,systemd
 nvitemd.service,systemd
 muse-server.service,systemd

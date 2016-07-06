@@ -80,6 +80,9 @@ tizenid.service,systemd
 ttrace-marker.service,systemd
 webappenc-initializer.service,systemd
 zbooting-done.service,systemd
+umount-opt.service,systemd
+security-config.service,systemd
+tizen-fstrim-user.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.machine1.service,dbus
