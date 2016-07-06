@@ -76,6 +76,31 @@ function LABEL_CHECK
 			fi	     
 		fi
 	done
+	/usr/bin/chsmack $1/.* | while read line2 
+	do
+		label=$(/bin/echo $line2 | /usr/bin/rev | /usr/bin/cut -f1 -d " " | /usr/bin/rev)
+		if [ "${label:0:6}" == 'access' ]
+		then
+			CHECK_RULE_ACCESS
+		elif [ "${label:0:7}" == 'execute' ] 
+		then
+			CHECK_RULE_EXECUTE
+			label=$(/bin/echo $line2 | /usr/bin/rev | /usr/bin/cut -f2 -d " " | /usr/bin/rev)
+			CHECK_RULE_ACCESS
+		elif [ "${label:0:9}" == 'transmute' ] 
+		then
+			label=$(/bin/echo $line2 | /usr/bin/rev | /usr/bin/cut -f2 -d " " | /usr/bin/rev)
+			if [ "${label:0:6}" == 'access' ]
+			then
+				CHECK_RULE_ACCESS
+			elif [ "${label:0:7}" == 'execute' ] 
+			then
+				CHECK_RULE_EXECUTE
+				label=$(/bin/echo $line2 | /usr/bin/rev | /usr/bin/cut -f3 -d " " | /usr/bin/rev)
+				CHECK_RULE_ACCESS	
+			fi	     
+		fi
+	done
 }
 
 function SMACK_LABEL_CHECK
