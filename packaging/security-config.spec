@@ -61,3 +61,4 @@ mkdir -p /usr/share/security-config/log
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 %attr(-,root,root) %{_unitdir}/security-config.service
 %attr(-,root,root) %{_unitdir}/multi-user.target.wants/security-config.service
+%attr(755,root,root) /usr/share/security-config/smack_default_labeling

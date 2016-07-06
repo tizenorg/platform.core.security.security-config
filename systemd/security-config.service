@@ -3,7 +3,7 @@ Description=security-config service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/chsmack -r -a "_" /csa
+ExecStart=/usr/share/security-config/smack_default_labeling
 
 [Install]
 WantedBy=multi-user.target

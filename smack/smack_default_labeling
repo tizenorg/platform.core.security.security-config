@@ -1,0 +1,27 @@
+#!/bin/bash
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+# check initial boot
+function check_init_boot
+{
+	if [ ! -e /usr/share/security-config/.smack_pre_labeling ]
+	then
+		touch /usr/share/security-config/.smack_pre_labeling
+		return 1
+	fi
+	return 0
+}
+
+# Set default smack label for the specific file or folder
+function set_smack_label
+{
+	chsmack -r -a "_" /csa
+}
+
+check_init_boot
+
+if [ "$?" == 1 ] # Init boot case
+then
+	set_smack_label
+fi
