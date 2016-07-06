@@ -20,7 +20,7 @@ setup files, such as passwd, group, and profile.
 %build
 
 %cmake . -DARCH=%{_arch} \
-	-DSYSTEMD_UNIT_DIR:PATH=%{_unitdir} \
+	-DSYSTEMD_INSTALL_DIR=%{_unitdir} \
 	-DPROFILE=%{profile}
 
 %install
@@ -30,8 +30,8 @@ cp LICENSE %{buildroot}%{_datadir}/license/%{name}
 cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %make_install
 
-mkdir -p %{buildroot}%{_libdir}/systemd/system/multi-user.target.wants
-ln -s ../%{name}.service %{buildroot}%{_libdir}/systemd/system/multi-user.target.wants/%{name}.service
+mkdir -p %{buildroot}/%{_unitdir}/multi-user.target.wants
+ln -s ../%{name}.service %{buildroot}/%{_unitdir}/multi-user.target.wants/%{name}.service
 
 %post
 /usr/share/security-config/group_id_setting
