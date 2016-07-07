@@ -1,7 +1,6 @@
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
-nether.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
 systemd-journald.service,systemd
@@ -10,4 +9,6 @@ systemd-udevd.service,systemd
 user@.service,systemd
 muse-server.service,systemd
 sdbd.service,systemd
+emuld.service,systemd
+vmodem-x86.service,systemd
 gumd.service,systemd
