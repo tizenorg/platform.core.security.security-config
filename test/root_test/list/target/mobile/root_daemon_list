@@ -2,11 +2,9 @@ connman.service,systemd
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
-lbs-server.service,systemd
 modemd.service,systemd
 net-config.service,systemd
 nvitemd.service,systemd
-nether.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
 systemd-journald.service,systemd
@@ -15,7 +13,7 @@ systemd-udevd.service,systemd
 tlm.service,systemd
 user@.service,systemd
 wifi-mac-check.service,systemd
-org.freedesktop.login1.service,dbus
+
 org.freedesktop.systemd1.service,dbus
 org.tizen.app2sd.service,dbus
 org.tizen.MobileapAgent.service,dbus
