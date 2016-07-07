@@ -1,3 +1,4 @@
+aul.service,systemd
 alsa-restore.service,systemd
 alsa-state.service,systemd
 alsa-store.service,systemd
@@ -77,6 +78,9 @@ tizenid.service,systemd
 ttrace-marker.service,systemd
 webappenc-initializer.service,systemd
 zbooting-done.service,systemd
+security-config.service,systemd
+buxton2.service,systemd
+pulseaudio.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.machine1.service,dbus
