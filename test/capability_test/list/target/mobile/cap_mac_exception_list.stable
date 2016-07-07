@@ -1,7 +1,6 @@
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
-nether.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
 systemd-journald.service,systemd

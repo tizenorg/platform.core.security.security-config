@@ -81,6 +81,9 @@ zbooting-done.service,systemd
 security-config.service,systemd
 buxton2.service,systemd
 pulseaudio.service,systemd
+lbs-server.service,systemd
+emul-common-preinit.service,systemd
+emul-setup-audio-volume.service,systemd
 org.freedesktop.hostname1.service,dbus
 org.freedesktop.locale1.service,dbus
 org.freedesktop.machine1.service,dbus
