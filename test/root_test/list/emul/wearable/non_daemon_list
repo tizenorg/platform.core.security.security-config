@@ -79,7 +79,6 @@ ttrace-marker.service,systemd
 webappenc-initializer.service,systemd
 zbooting-done.service,systemd
 security-config.service,systemd
-tizen-fstrim-user.service,systemd
 buxton2.service,systemd
 pulseaudio.service,systemd
 org.bluez.hf_agent.service,dbus

@@ -31,3 +31,4 @@ muse-server.service,systemd
 deviced-vibrator.service,systemd
 sdbd.service,systemd
 sdbd_tcp.service,systemd
+gumd.service,systemd
