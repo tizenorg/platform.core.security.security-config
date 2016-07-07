@@ -18,3 +18,4 @@ mobileap-agent.service,systemd
 muse-server.service,systemd
 deviced-vibrator.service,systemd
 sdbd.service,systemd
+gumd.service,systemd
