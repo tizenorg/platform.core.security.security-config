@@ -1,4 +1,2 @@
 /usr/bin/su
 /usr/lib/dbus/dbus-daemon-launch-helper
-/usr/bin/umount
-/usr/bin/mount
