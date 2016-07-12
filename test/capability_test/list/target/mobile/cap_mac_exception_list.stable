@@ -1,13 +1,11 @@
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
-device-policy-manager.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
 systemd-journald.service,systemd
 systemd-logind.service,systemd
 systemd-udevd.service,systemd
 user@.service,systemd
-muse-server.service,systemd
 sdbd.service,systemd
 sdbd_tcp.service,systemd
 gumd.service,systemd

@@ -1,6 +1,5 @@
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
-device-policy-manager.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
 systemd-journald.service,systemd
@@ -9,6 +8,5 @@ systemd-udevd.service,systemd
 tlm.service,systemd
 user@.service,systemd
 wifi-direct-manager.service,systemd
-muse-server.service,systemd
 sdbd.service,systemd
 sdbd_tcp.service,systemd
