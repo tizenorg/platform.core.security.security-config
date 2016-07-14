@@ -30,8 +30,10 @@ cp LICENSE %{buildroot}%{_datadir}/license/%{name}
 cp LICENSE %{buildroot}%{_datadir}/license/security-config
 %make_install
 
+%if "%{?profile}" != "tv"
 mkdir -p %{buildroot}/%{_unitdir}/multi-user.target.wants
 ln -s ../%{name}.service %{buildroot}/%{_unitdir}/multi-user.target.wants/%{name}.service
+%endif
 
 %post
 /usr/share/security-config/group_id_setting
@@ -59,6 +61,8 @@ mkdir -p /usr/share/security-config/log
 %attr(755,root,root) /usr/share/security-config/test/security_mount_option_test/*
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/90_user-content-permissions.post
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
+%if "%{?profile}" != "tv"
 %attr(-,root,root) %{_unitdir}/security-config.service
 %attr(-,root,root) %{_unitdir}/multi-user.target.wants/security-config.service
 %attr(755,root,root) /usr/share/security-config/smack_default_labeling
+%endif
