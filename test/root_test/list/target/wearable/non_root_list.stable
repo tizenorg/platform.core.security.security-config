@@ -16,6 +16,7 @@ focus-server.service,systemd,multimedia_fw,multimedia_fw
 media-server.service,systemd,multimedia_fw,multimedia_fw
 msg-server.service,systemd,messaging,messaging
 mtp-responder.service,systemd,owner,users
+muse-server.service,systemd,multimedia_fw,multimedia_fw
 nfc-manager.service,systemd,network_fw,network_fw
 phonenumber-utils.service,systemd,service_fw,service_fw
 pulseaudio.service,systemd,pulse,pulse
