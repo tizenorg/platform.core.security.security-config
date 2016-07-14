@@ -18,6 +18,7 @@ esd.service,systemd,app_fw,app_fw
 focus-server.service,systemd,multimedia_fw,multimedia_fw
 media-server.service,systemd,multimedia_fw,multimedia_fw
 msg-server.service,systemd,messaging,messaging
+muse-server.service,systemd,multimedia_fw,multimedia_fw
 nfc-manager.service,systemd,network_fw,network_fw
 phonenumber-utils.service,systemd,service_fw,service_fw
 privacy-guard-server.service,systemd,security_fw,security_fw

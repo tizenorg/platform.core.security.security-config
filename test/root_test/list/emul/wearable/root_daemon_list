@@ -23,7 +23,6 @@ net.netconfig.service,dbus
 connman-vpn.service,systemd
 mobileap-agent.service,systemd
 app2sd-server.service,systemd
-muse-server.service,systemd
 deviced-vibrator.service,systemd
 sdbd.service,systemd
 emuld.service,systemd
