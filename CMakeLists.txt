@@ -18,6 +18,22 @@ IF(NOT "${PROFILE}" STREQUAL "tv")
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/smack/smack_default_labeling DESTINATION /usr/share/security-config)
 ENDIF()
 
+IF("${ARCH}" STREQUAL "arm" OR "${ARCH}" STREQUAL "aarch64")
+    IF("${PROFILE}" STREQUAL "mobile")
+        INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/service_list/target/mobile/service_daemon_list DESTINATION /usr/share/security-config)
+    ELSEIF("${PROFILE}" STREQUAL "wearable")
+        INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/service_list/target/wearable/service_daemon_list DESTINATION /usr/share/security-config)
+    ENDIF()
+ENDIF()
+
+IF("${ARCH}" STREQUAL "i386" OR "${ARCH}" STREQUAL "x86_64")
+    IF("${PROFILE}" STREQUAL "mobile")
+        INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/service_list/emulator/mobile/service_daemon_list DESTINATION /usr/share/security-config)
+    ELSEIF("${PROFILE}" STREQUAL "wearable")
+        INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/service_list/emulator/wearable/service_daemon_list DESTINATION /usr/share/security-config)
+    ENDIF()
+ENDIF()
+
 INSTALL(FILES
     ${CMAKE_SOURCE_DIR}/packaging/security-config.manifest
     DESTINATION
