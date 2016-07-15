@@ -66,3 +66,10 @@ mkdir -p /usr/share/security-config/log
 %attr(-,root,root) %{_unitdir}/multi-user.target.wants/security-config.service
 %attr(755,root,root) /usr/share/security-config/smack_default_labeling
 %endif
+%if ("%{?profile}" == "mobile" || "%{?profile}" == "wearable") && ("%{?_arch}" == "arm" || "%{?_arch}" == "aarch64" || "%{?_arch}" == "i386" || "%{?_arch}" == "x86_64")
+%attr(755,root,root) /usr/share/security-config/service_daemon_list
+%endif
+
+
+
+
