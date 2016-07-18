@@ -368,6 +368,146 @@ function RULE_CHECK
         then
             return 0
         fi 
+    # System::Privileged System rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "System" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi
+    # System::Privileged System::Shared rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "System::Shared" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi
+    # System::Privileged System::Run rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "System::Run" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi
+    # System::Privileged System::Log rwxa
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "System::Log" ]]
+    then
+        if [ "$3" == "rwxa" ]
+        then
+            return 0
+        fi
+    # System::Privileged User::Home rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "User::Home" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi
+    # System::Privileged User::App::Shared rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "User::App::Shared" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi
+    # System::Privileged _ rwx
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "_" ]]
+    then
+        if [ "$3" == "rwx" ]
+        then
+            return 0
+        fi  
+    # _ System::Privileged wx
+    elif [ "$1" == "_" ] && [[ "$2" == "System::Privileged" ]]
+    then
+        if [ "$3" == "wx" ]
+        then
+            return 0
+        fi
+    # System System::Privileged rwxat
+    elif [ "$1" == "System" ] && [[ "$2" == "System::Privileged" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi 
+    # ^ System::Privileged rwxa
+    elif [ "$1" == "^" ] && [[ "$2" == "System::Privileged" ]]
+    then
+        if [ "$3" == "rwxa" ]
+        then
+            return 0
+        fi
+    # System::Privileged ^ rwxa
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "^" ]]
+    then
+        if [ "$3" == "rwxa" ]
+        then
+            return 0
+        fi
+    # User System::Privileged wx
+    elif [ "$1" == "User" ] && [[ "$2" == "System::Privileged" ]]
+    then
+        if [ "$3" == "wx" ]
+        then
+            return 0
+        fi
+    # System::Privileged User rwx
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "User" ]]
+    then
+        if [ "$3" == "rwx" ]
+        then
+            return 0
+        fi
+    # System::Privileged ~PKG~ rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == *"::Pkg::"* ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi    
+    # System::Privileged ~PKG~::RO rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == *"::Pkg::"*"::RO" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi 
+    # System::Privileged ~PKG~::SharedRO rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == *"::Pkg::"*"::SharedRO" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi                       
+    # System::Privileged User::App::Shared rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == "User::App::Shared" ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi 
+    # System::Privileged ~APP~ rwx
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == *"::App::"* ]]
+    then
+        if [ "$3" == "rwx" ]
+        then
+            return 0
+        fi            
+    # ~APP~ System::Privileged wx
+    elif [[ "$1" == *"::App::"* ]] && [ "$2" == "System::Privileged" ]
+    then
+        if [ "$3" == "wx" ]
+        then
+            return 0
+        fi
+    # System::Privileged ~AUTHOR~ rwxat
+    elif [ "$1" == "System::Privileged" ] && [[ "$2" == *"Author"* ]]
+    then
+        if [ "$3" == "rwxat" ]
+        then
+            return 0
+        fi   
     fi
 
     EXCEPTION_CHECK $1 $2 $3

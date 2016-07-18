@@ -26,7 +26,7 @@ function CHECK_RULE_ACCESS
 	if [ "${label:8:1}"  != '_' ] && [ "${label:8:1}"  != '*' ] && [ "${label:8:1}"  != '^' ] &&
 		 [ "${label:8:6}"  != 'System' ] && [ "${label:8:11}"  != 'System::Run' ] && [ "${label:8:11}"  != 'System::Log' ] &&
 	   [ "${label:8:14}"  != 'System::Shared' ] && [ "${label:8:4}"  != 'User' ] && [ "${label:8:10}"  != 'User::Home' ] &&
-	   [ "${label:8:17}"  != 'User::App::Shared' ] && [ "${label:8:9}"  != 'User::Pkg' ]
+	   [ "${label:8:17}"  != 'User::App::Shared' ] && [ "${label:8:9}"  != 'User::Pkg' ] && [ "${label:8:18}" != 'System::Privileged']
 	then
 		CHECK_EXCEPTION
 		if [ "$?" == 0 ]
@@ -39,7 +39,7 @@ function CHECK_RULE_ACCESS
 function CHECK_RULE_EXECUTE
 {
 	if [ "${label:9:1}"  != '_' ] && [ "${label:9:1}"  != '^' ] &&
-	   [ "${label:9:6}"  != 'System' ] && [ "${label:9:4}"  != 'User' ] && [ "${label:9:9}"  != 'User::App' ]
+	   [ "${label:9:6}"  != 'System' ] && [ "${label:9:4}"  != 'User' ] && [ "${label:9:9}"  != 'User::App' ] && [ "${label:9:18}" != 'System::Privileged']
 	then
 		CHECK_EXCEPTION
 		if [ "$?" == 0 ]
