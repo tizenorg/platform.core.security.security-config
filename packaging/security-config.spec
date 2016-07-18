@@ -45,6 +45,7 @@ mkdir -p /usr/share/security-config/log
 %manifest %{_datadir}/%{name}.manifest
 %{_datadir}/license/%{name}
 %defattr(-,root,root,-)
+%attr(644,root,root) /etc/smack/onlycap
 %attr(755,root,root) /usr/share/security-config/group_id_setting
 %attr(755,root,root) /usr/share/security-config/set_label
 %attr(755,root,root) /usr/share/security-config/set_capability
