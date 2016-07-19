@@ -25,3 +25,5 @@ if [ "$?" == 1 ] # Init boot case
 then
 	set_smack_label
 fi
+
+echo "System::Privileged" > /sys/fs/smackfs/onlycap
