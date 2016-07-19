@@ -1,6 +1,5 @@
 /usr/bin/account-svcd
 /usr/bin/alarm-server
-/usr/bin/app2sd-server
 /usr/bin/auth-fw
 /usr/bin/bt-service
 /usr/sbin/buxton2d
