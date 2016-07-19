@@ -2,6 +2,7 @@ connman.service,systemd
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
+display-manager.service,systemd
 net-config.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
@@ -23,7 +24,6 @@ net.netconfig.service,dbus
 connman-vpn.service,systemd
 mobileap-agent.service,systemd
 app2sd-server.service,systemd
-nether.service,systemd
 deviced-vibrator.service,systemd
 sdbd.service,systemd
 emuld.service,systemd

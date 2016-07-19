@@ -1,5 +1,6 @@
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
+display-manager.service,systemd
 resourced.service,systemd
 security-manager.service,systemd
 systemd-journald.service,systemd

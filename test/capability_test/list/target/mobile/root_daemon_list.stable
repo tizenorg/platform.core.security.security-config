@@ -2,6 +2,7 @@ connman.service,systemd
 dbus-org.freedesktop.login1.service,systemd
 deviced.service,systemd
 device-policy-manager.service,systemd
+display-manager.service,systemd
 modemd.service,systemd
 net-config.service,systemd
 nvitemd.service,systemd

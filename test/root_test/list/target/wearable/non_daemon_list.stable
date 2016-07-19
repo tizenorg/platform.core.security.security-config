@@ -15,7 +15,6 @@ dbus-org.freedesktop.locale1.service,systemd
 dbus-org.freedesktop.machine1.service,systemd
 debug-shell.service,systemd
 deviced-pre.service,systemd
-display-manager.service,systemd
 emergency.service,systemd
 getty@.service,systemd
 initrd-cleanup.service,systemd
