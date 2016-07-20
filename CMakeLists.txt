@@ -14,8 +14,9 @@ INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/set_capability DESTINATION /usr/share/s
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/security-config.conf DESTINATION /usr/lib/tmpfiles.d/)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/90_user-content-permissions.post DESTINATION ${SYSCONF_INSTALL_DIR}/gumd/useradd.d)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/config/91_user-dbspace-permissions.post DESTINATION ${SYSCONF_INSTALL_DIR}/gumd/useradd.d)
+
+IF("${PROFILE}" STREQUAL "mobile" OR "${PROFILE}" STREQUAL "wearable")
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/smack/onlycap DESTINATION /etc/smack)
-IF(NOT "${PROFILE}" STREQUAL "tv")
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/smack/smack_default_labeling DESTINATION /usr/share/security-config)
 ENDIF()
 
@@ -42,6 +43,6 @@ INSTALL(FILES
 )
 
 ADD_SUBDIRECTORY(test)
-IF(NOT "${PROFILE}" STREQUAL "tv")
+IF("${PROFILE}" STREQUAL "mobile" OR "${PROFILE}" STREQUAL "wearable")
 ADD_SUBDIRECTORY(systemd)
 ENDIF()
