@@ -12,7 +12,6 @@
 /usr/bin/csr-server
 /usr/bin/cynara
 /usr/bin/data-provider-master
-/usr/bin/dbus-daemon
 /usr/bin/deviced-vibrator
 /usr/bin/device-policy-manager
 /usr/bin/enlightenment
@@ -41,6 +40,3 @@
 /usr/bin/tlm
 /usr/bin/wfd-manager
 /usr/bin/wifi-loader
-/usr/bin/launchpad-loader
-/usr/bin/wrt-loader
-/usr/bin/xwalk_runtime
