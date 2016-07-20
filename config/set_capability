@@ -111,8 +111,13 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 ## Give "System" execute label which do not have cap_mac_admin
 service_list_path="/usr/share/security-config/service_daemon_list"
+admin_service_list_path="/usr/share/security-config/admin_service_daemon_list"
 cat $service_list_path | while read line
 do
 	/usr/bin/chsmack -e "System" $line
+done
+cat $admin_service_list_path | while read line
+do
+	/usr/bin/chsmack -e "System::Privileged" $line
 done
 

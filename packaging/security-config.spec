@@ -63,6 +63,7 @@ mkdir -p /usr/share/security-config/log
 %attr(755,root,root) %{_sysconfdir}/gumd/useradd.d/91_user-dbspace-permissions.post
 %if ("%{?profile}" == "mobile" || "%{?profile}" == "wearable")
 %attr(755,root,root) /usr/share/security-config/service_daemon_list
+%attr(755,root,root) /usr/share/security-config/admin_service_daemon_list
 %attr(-,root,root) %{_unitdir}/security-config.service
 %attr(-,root,root) %{_unitdir}/multi-user.target.wants/security-config.service
 %attr(755,root,root) /usr/share/security-config/smack_default_labeling
