@@ -17,6 +17,11 @@ function check_init_boot
 function set_smack_label
 {
 	chsmack -r -a "_" /csa
+
+	# onlycap feautre
+	chsmack -e "User" /usr/bin/launchpad-loader
+	chsmack -e "User" /usr/bin/wrt-loader
+	chsmack -e "User" /usr/bin/xwalk_runtime
 }
 
 check_init_boot

@@ -36,6 +36,3 @@
 /usr/bin/focus_server
 /usr/bin/telephony-daemon
 /usr/bin/tlm
-/usr/bin/launchpad-loader
-/usr/bin/wrt-loader
-/usr/bin/xwalk_runtime
