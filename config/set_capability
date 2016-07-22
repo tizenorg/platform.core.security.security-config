@@ -99,20 +99,3 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 /usr/sbin/setcap cap_dac_override=eip /usr/bin/muse-server
 
-
-## Smack labeling
-# Below lines are executed in end of kick start file
-
-/usr/bin/chsmack -a "System::Shared" /etc/.pwd.lock
-/usr/bin/chsmack -a "System::Shared" /etc/passwd*
-/usr/bin/chsmack -a "System::Shared" /etc/group*
-/usr/bin/chsmack -a "System::Shared" /etc/gshadow*
-/usr/bin/chsmack -a "System::Shared" /etc/shadow*
-
-## Give "System" execute label which do not have cap_mac_admin
-service_list_path="/usr/share/security-config/service_daemon_list"
-cat $service_list_path | while read line
-do
-	/usr/bin/chsmack -e "System" $line
-done
-
