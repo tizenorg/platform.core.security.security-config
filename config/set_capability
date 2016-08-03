@@ -99,3 +99,11 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 /usr/sbin/setcap cap_dac_override=eip /usr/bin/muse-server
 
+# Package                       gpsd
+# Owner                         kyoungjun sung(kj7.sung@samsung.com)
+# Date                          Aug 03, 2016
+# Required                      cap_dac_override
+# cap_dac_override      access to /dev/ directory
+
+/usr/sbin/setcap cap_dac_override=eip /usr/bin/gpsd
+
